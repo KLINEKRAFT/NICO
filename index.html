@@ -429,15 +429,17 @@ body::after{
 .figure{ position:relative; overflow:hidden; background:var(--ground-2); }
 .figure img{
   width:100%; height:100%; object-fit:cover; display:block;
-  will-change:transform;
-  transition:transform 1.2s var(--ease);
+  transition:transform .9s var(--ease-out);
 }
-.figure[data-hover]:hover img{ transform:scale(1.04); }
+/* Hover zoom only applies after the reveal has cleared GSAP's inline transform.
+   (See JS: `.to(img, { ..., clearProps:'transform' })`.) */
+.figure[data-hover]:hover img{ transform:scale(1.03); }
 .figure__veil{
   position:absolute; inset:0; background:var(--ground);
-  transform-origin:bottom; will-change:transform;
+  transform-origin:bottom;
   z-index:2;
 }
+.figure__veil.is-armed{ will-change:transform; }
 .figure__cap{
   position:absolute; left:16px; bottom:16px;
   font-family:var(--mono); font-size:10px;
@@ -787,9 +789,11 @@ body::after{
 
 /* utilities */
 .split-line{ display:block; overflow:hidden; }
-.split-line__inner{ display:inline-block; will-change:transform; }
-.fade-up{ opacity:0; transform:translateY(28px); will-change:transform, opacity; }
-.fade-in{ opacity:0; will-change:opacity; }
+.split-line__inner{ display:inline-block; }
+/* No `will-change` here — GSAP auto-promotes during animation; afterwards we don't need a layer.
+   Initial transform is set by GSAP via `gsap.fromTo`, so we don't need a flash-of-translated-content rule either. */
+.fade-up{ opacity:0; }
+.fade-in{ opacity:0; }
 
 /* if JS fails, reveal everything so page is still readable */
 .no-js .fade-up, .no-js .fade-in,
@@ -1480,22 +1484,25 @@ body::after{
 
   gsap.registerPlugin(ScrollTrigger);
   gsap.defaults({ ease: 'expo.out' });
+  ScrollTrigger.config({ ignoreMobileResize: true });
 
-  /* ─── Lenis smooth scroll ─── */
+  /* ─── Lenis smooth scroll — tuned for premium feel without drag ─── */
   const lenis = new Lenis({
-    duration: 1.4,
+    duration: 1.05,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     smoothWheel: true,
     smoothTouch: false,
+    wheelMultiplier: 1.0,
     touchMultiplier: 1.4,
   });
 
   lenis.on('scroll', ScrollTrigger.update);
 
   gsap.ticker.add((time)=>{ lenis.raf(time * 1000); });
-  gsap.ticker.lagSmoothing(0);
+  /* Allow up to 500ms of catch-up before re-syncing — prevents jumps on dropped frames */
+  gsap.ticker.lagSmoothing(500, 33);
 
-  // anchor links route through lenis
+  // anchor links route through lenis — shorter, snappier
   $$('a[href^="#"]').forEach(a=>{
     a.addEventListener('click', (e)=>{
       const id = a.getAttribute('href');
@@ -1503,7 +1510,7 @@ body::after{
       const el = document.querySelector(id);
       if(!el) return;
       e.preventDefault();
-      lenis.scrollTo(el, { offset: -60, duration: 1.6 });
+      lenis.scrollTo(el, { offset: -60, duration: 1.1 });
     });
   });
 
@@ -1555,16 +1562,16 @@ body::after{
     }
   });
 
-  /* ─── hero parallax ─── */
+  /* ─── hero parallax — smoothed scrub avoids tracking jitter from Lenis ─── */
   if(!prefersReduced){
     gsap.to('#heroMedia', {
-      yPercent: 18,
+      yPercent: 14,
       ease:'none',
       scrollTrigger: {
         trigger: '#hero',
         start: 'top top',
         end: 'bottom top',
-        scrub: true,
+        scrub: 0.4,
       }
     });
   }
@@ -1596,71 +1603,68 @@ body::after{
     scrollTrigger: { trigger:'#stats', start:'top 80%', once:true }
   });
 
-  /* ─── figure veil reveals ─── */
+  /* ─── figure veil reveals — single reveal per figure, no competing parallax ─── */
   $$('.figure').forEach(fig=>{
     const veil = fig.querySelector('.figure__veil');
     const img  = fig.querySelector('img');
     if(!veil) return;
 
+    /* If the figure is already in the viewport at load, just clear the veil — no animation. */
+    const rect = fig.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
+
+    if(inView){
+      veil.style.display = 'none';
+      if(img) gsap.set(img, { scale: 1 });
+      return;
+    }
+
     gsap.set(veil, { scaleY: 1 });
-    gsap.set(img,  { scale: 1.18 });
+    veil.classList.add('is-armed');
+    if(img) gsap.set(img,  { scale: 1.08 });
 
     gsap.timeline({
-      scrollTrigger: { trigger: fig, start: 'top 82%', once:true }
+      scrollTrigger: { trigger: fig, start: 'top 85%', once:true },
+      onComplete: ()=>{ veil.classList.remove('is-armed'); veil.style.display = 'none'; }
     })
-    .to(veil, { scaleY: 0, transformOrigin:'top', duration: 1.4, ease:'power3.inOut' })
-    .to(img,  { scale: 1.0, duration: 1.6, ease:'power3.out' }, '-=1.2');
+    .to(veil, { scaleY: 0, transformOrigin:'top', duration: 1.1, ease:'expo.inOut' })
+    .to(img,  { scale: 1.0, duration: 1.3, ease:'expo.out', clearProps:'transform' }, '-=0.9');
   });
 
-  /* ─── figure parallax on long images ─── */
+  /* ─── parallax only on the big cinematic plates (wide-figure + fb) ─── *
+   * Small gallery figures intentionally do NOT parallax — it created jitter and
+   * fought with the veil reveal. The big plates use smoothed scrub. */
   if(!prefersReduced){
-    $$('.figure img').forEach(img=>{
-      const fig = img.closest('.figure');
-      if(!fig) return;
-      gsap.to(img, {
-        yPercent: -6, scale: 1.02,
-        ease:'none',
-        scrollTrigger: { trigger: fig, start:'top bottom', end:'bottom top', scrub: true }
-      });
-    });
-
     $$('.wide-figure__img, .fb__img').forEach(el=>{
       gsap.fromTo(el,
-        { yPercent: -8 },
+        { yPercent: -6 },
         {
-          yPercent: 8, ease:'none',
-          scrollTrigger: { trigger: el.parentElement, start:'top bottom', end:'bottom top', scrub:true }
+          yPercent: 6, ease:'none',
+          scrollTrigger: { trigger: el.parentElement, start:'top bottom', end:'bottom top', scrub: 0.4 }
         });
     });
   }
 
-  /* ─── pinned image expansion (architecture) ─── */
+  /* ─── pinned image expansion (architecture) — single timeline, smoothed scrub.
+   *     Combining frame + media transforms in one ScrollTrigger avoids the
+   *     two-trigger lag drift; scrub 0.4 keeps it tied to the pointer. */
   if(!prefersReduced){
-    gsap.to('#expandFrame', {
-      clipPath: 'inset(0% 0% 0% 0%)',
-      ease:'none',
+    gsap.timeline({
       scrollTrigger: {
         trigger:'#architecture',
         start:'top top',
         end:'bottom bottom',
-        scrub: 1,
+        scrub: 0.4,
+        invalidateOnRefresh: true,
       }
-    });
-    gsap.to('#expandMedia', {
-      scale: 1.05,
-      ease:'none',
-      scrollTrigger: {
-        trigger:'#architecture',
-        start:'top top',
-        end:'bottom bottom',
-        scrub: 1,
-      }
-    });
+    })
+    .to('#expandFrame', { clipPath: 'inset(0% 0% 0% 0%)', ease:'none' }, 0)
+    .to('#expandMedia', { scale: 1.04, ease:'none' }, 0);
   }
 
   /* ─── invite rule grows ─── */
   gsap.from('.invite__rule', {
-    scaleY: 0, transformOrigin:'top', duration:1.4, ease:'power3.inOut',
+    scaleY: 0, transformOrigin:'top', duration:1.2, ease:'expo.inOut',
     scrollTrigger:{ trigger:'.invite__rule', start:'top 85%', once:true }
   });
 
