@@ -6,10 +6,15 @@ A single-page cinematic real estate site for the English manor estate at 11147 S
 
 ```
 /
-├── index.html                  ← the site (everything inlined except images + libs)
+├── index.html                  ← the site (everything inlined except images, fonts + libs)
+├── fonts/
+│   ├── Bauziet-Light.otf       ← CB primary display font (per 2025 standards)
+│   ├── Bauziet-Italic.otf
+│   ├── Bauziet-Medium.otf
+│   └── Bauziet-Bold.otf
 ├── images/
 │   ├── property/               ← 70 listing photos (1920px JPEGs, ~28MB)
-│   └── floorplans/             ← 3 floor plans (cream-on-dark plan diagrams)
+│   └── floorplans/             ← 3 floor plans
 └── vendor/
     ├── gsap.min.js             ← GSAP 3.12.5
     ├── ScrollTrigger.min.js    ← GSAP ScrollTrigger plugin
@@ -34,10 +39,14 @@ No build step. Drop these four directories into any static host.
 
 ## Design system
 
-- Type: **Fraunces** (display, italic for bronze accents) · **Inter Tight** (body) · **IBM Plex Mono** (labels and data)
-- Palette: warm near-black `#0c0a08` ground, ivory `#ece4d6` type, single bronze accent `#b08858`
+Aligned with the Coldwell Banker® 2024–2025 Brand Identity Standards.
+
+- Type: **Bauziet** (display, served locally from `/fonts`) · **Roboto** (body) · **Roboto Mono** (labels and data)
+- Palette: CB Midnight `#0A1730` ground, near-white `#F4F7FB` type, CB Celestial `#418FDE` accent for italic emphasis. Footer in CB Blue `#012169`. No gold or bronze anywhere on the site.
+- The CB Monogram (white North Star + "CB" silhouette) appears in the nav and footer locked up with "Coldwell Banker® Select · NICO Group". The Monogram form is used because it sits on dark / CB Blue surfaces — per the 2025 standards.
 - Motion: GSAP + ScrollTrigger reveals, Lenis smooth-scroll, pinned image expansion on the architecture section, parallax on every full-bleed media block
-- Footer carries the Coldwell Banker / Anywhere Advisors disclaimer and the KLINEKRAFT wordmark
+- Footer carries the full Coldwell Banker / Anywhere Advisors disclaimer (printed-materials wording from the 2025 standards), Equal Housing Opportunity, REALTOR® lockup, and the KLINEKRAFT wordmark
+- Fully responsive: breakpoints at 980px (single-column duos), 860px (compact nav), 780px (stacked grids), 560px and 420px (mobile micro-adjustments). Custom cursor is disabled on touch devices.
 
 ## Browser support
 
