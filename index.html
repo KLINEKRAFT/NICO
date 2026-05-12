@@ -8,7 +8,7 @@
 <meta name="description" content="An English manor estate, completely reimagined on 3.2 wooded acres in the gated Whit-Acres community of South Tulsa. 11147 South Quebec Avenue. Offered by NICO Group · Coldwell Banker Select." />
 <meta property="og:title" content="11147 S Quebec Avenue — Tulsa" />
 <meta property="og:description" content="An English manor, reimagined. Six bedrooms, 3.2 wooded acres in gated Whit-Acres, South Tulsa." />
-<meta property="og:image" content="./images/property/01-2.jpg" />
+<meta property="og:image" content="./assets/images/property/01-2.jpg" />
 <meta property="og:type" content="website" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,22 +21,22 @@
    ─────────────────────────────────────────────────────────── */
 @font-face{
   font-family:"Bauziet";
-  src:url("./fonts/Bauziet-Light.otf") format("opentype");
+  src:url("./assets/fonts/Bauziet-Light.otf") format("opentype");
   font-weight:300; font-style:normal; font-display:swap;
 }
 @font-face{
   font-family:"Bauziet";
-  src:url("./fonts/Bauziet-Italic.otf") format("opentype");
+  src:url("./assets/fonts/Bauziet-Italic.otf") format("opentype");
   font-weight:300; font-style:italic; font-display:swap;
 }
 @font-face{
   font-family:"Bauziet";
-  src:url("./fonts/Bauziet-Medium.otf") format("opentype");
+  src:url("./assets/fonts/Bauziet-Medium.otf") format("opentype");
   font-weight:500; font-style:normal; font-display:swap;
 }
 @font-face{
   font-family:"Bauziet";
-  src:url("./fonts/Bauziet-Bold.otf") format("opentype");
+  src:url("./assets/fonts/Bauziet-Bold.otf") format("opentype");
   font-weight:700; font-style:normal; font-display:swap;
 }
 
@@ -105,55 +105,31 @@ body::after{
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 
-/* custom cursor — desktop only */
-.cursor{
-  position:fixed; top:0; left:0;
-  width:8px; height:8px; border-radius:50%;
-  background:var(--type); pointer-events:none; z-index:300;
-  mix-blend-mode:difference;
-  transform:translate(-50%,-50%);
-  transition:width .35s var(--ease), height .35s var(--ease), background .35s var(--ease);
-}
-.cursor.is-hover{ width:54px; height:54px; background:var(--cb-celestial); }
-.cursor.is-hidden{ opacity:0; }
-@media (hover:none){ .cursor{display:none} }
+/* custom cursor removed by request */
+
 
 /* ───────────────────────────────────────────────────────────
-   CB monogram & lockup
+   CB Select horizontal lockup (official PNG, white on transparent)
+   File: assets/logo/Logo_133009_Select_HZ_W_MO.png (1961×200)
    ─────────────────────────────────────────────────────────── */
-.cb-mark{
-  display:inline-flex; align-items:center; gap:12px;
-  color:var(--type);
+.cb-logo{
+  display:inline-flex; align-items:center;
+  height:36px;
 }
-.cb-mark__monogram{
-  width:28px; height:28px; flex-shrink:0;
-  display:block;
+.cb-logo img{
+  height:100%; width:auto; display:block;
+  user-select:none; -webkit-user-drag:none;
 }
-.cb-mark__monogram--framed{
-  width:34px; height:34px;
-  background:var(--cb-blue);
-  padding:5px;
-  border-radius:2px;
+.cb-logo--nav    { height:34px; }
+.cb-logo--contact{ height:48px; }
+.cb-logo--footer { height:46px; }
+@media (max-width:860px){
+  .cb-logo--nav    { height:26px; }
+  .cb-logo--contact{ height:38px; }
+  .cb-logo--footer { height:36px; }
 }
-.cb-mark__wordmark{
-  display:flex; flex-direction:column; line-height:1;
-  font-family:var(--body); color:var(--type);
-  white-space:nowrap;
-}
-.cb-mark__wordmark .cb-mark__line1{
-  font-size:9px; font-weight:500;
-  letter-spacing:.22em; text-transform:uppercase;
-  color:var(--type-dim);
-  white-space:nowrap;
-}
-.cb-mark__wordmark .cb-mark__line2{
-  font-size:11px; font-weight:700;
-  letter-spacing:.18em; text-transform:uppercase;
-  margin-top:3px; color:var(--type);
-  white-space:nowrap;
-}
-.cb-mark__wordmark .cb-mark__sub{
-  display:inline; opacity:.7;
+@media (max-width:480px){
+  .cb-logo--nav    { height:22px; }
 }
 
 /* ───────────────────────────────────────────────────────────
@@ -205,13 +181,6 @@ body::after{
   }
   .nav__center{ display:none; }
   .nav__right{ gap:14px; font-size:10px; letter-spacing:.14em; }
-  .cb-mark__wordmark .cb-mark__line2{ font-size:10px; letter-spacing:.14em; }
-  .cb-mark__wordmark .cb-mark__line1{ font-size:8px; letter-spacing:.18em; }
-  .cb-mark__monogram{ width:24px; height:24px; }
-  .cb-mark__monogram--framed{ width:28px; height:28px; padding:4px; }
-  .cb-mark{ gap:10px; }
-  /* on narrowest screens, drop the "NICO Group" sub-affix from the nav lockup */
-  .nav .cb-mark__wordmark .cb-mark__sub{ display:none; }
 }
 @media (max-width:420px){
   .nav__right .nav__link[href="#plans"]{ display:none; }
@@ -271,69 +240,93 @@ body::after{
 }
 .hero__inner{
   position:relative; z-index:2; height:100%;
-  display:grid; grid-template-rows:1fr auto auto;
-  align-items:center; justify-items:center;
-  padding:120px 24px 56px; text-align:center;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:120px 56px 64px;
 }
 .hero__group{
-  display:flex; flex-direction:column; align-items:center; gap:28px;
-  align-self:center;
+  display:flex; flex-direction:column; gap:24px;
+  max-width:960px;
 }
 .hero__eyebrow{
   font-family:var(--mono); font-size:11px;
   letter-spacing:.32em; text-transform:uppercase; color:var(--type-dim);
   display:flex; align-items:center; gap:14px;
 }
-.hero__eyebrow::before, .hero__eyebrow::after{
-  content:""; display:inline-block; width:32px; height:1px; background:var(--accent-soft);
+.hero__eyebrow::before{
+  content:""; display:inline-block; width:48px; height:1px; background:var(--cb-celestial);
 }
 .hero__title{
   font-family:var(--display);
   font-weight:300;
-  font-size:clamp(44px, 9vw, 140px);
-  line-height:.95;
+  font-size:clamp(42px, 8.4vw, 132px);
+  line-height:.98;
   letter-spacing:-.025em;
-  margin-top:16px;
   color:var(--type);
 }
 .hero__title em{
   font-style:italic; font-weight:300;
   color:var(--cb-celestial);
 }
-.hero__sub{
-  margin-top:16px;
+.hero__meta{
+  position:absolute; right:56px; bottom:64px; z-index:3;
+  display:flex; flex-direction:column; align-items:flex-end; gap:10px;
+  text-align:right;
   font-family:var(--mono); font-size:11px;
-  letter-spacing:.28em; text-transform:uppercase; color:var(--type-dim);
+  letter-spacing:.24em; text-transform:uppercase; color:var(--type-dim);
 }
-.hero__scroll{
-  display:flex; flex-direction:column; align-items:center; gap:12px;
-  font-family:var(--mono); font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--type-dim);
+.hero__meta-address{ color:var(--type); }
+.hero__meta-price{
+  font-family:var(--display); font-size:20px;
+  letter-spacing:.04em; color:var(--type); font-weight:300;
 }
-.hero__scroll-line{
-  width:1px; height:48px;
-  background:linear-gradient(to bottom, var(--type-dim), transparent);
-  animation:scrollLine 2.4s var(--ease) infinite;
+.hero__rule{
+  position:absolute; left:56px; right:56px; bottom:40px;
+  height:1px; background:linear-gradient(to right, rgba(244,247,251,.28), rgba(244,247,251,.06));
+  z-index:3;
 }
-@keyframes scrollLine{
-  0%{ transform:scaleY(0); transform-origin:top; }
-  50%{ transform:scaleY(1); transform-origin:top; }
-  50.01%{ transform:scaleY(1); transform-origin:bottom; }
-  100%{ transform:scaleY(0); transform-origin:bottom; }
+@media (max-width:1100px){
+  .hero__inner{ padding:120px 40px 56px; }
+  .hero__rule{ left:40px; right:40px; bottom:32px; }
+  .hero__meta{ right:40px; bottom:56px; }
 }
-@media (max-width:780px){
+@media (max-width:900px){
+  .hero__inner{
+    padding:104px 28px 60px;
+  }
+  .hero__rule{ left:28px; right:28px; bottom:28px; }
+  .hero__meta{
+    position:static; right:auto; bottom:auto;
+    margin-top:22px;
+    align-items:flex-start; text-align:left;
+    font-size:10px; letter-spacing:.22em; gap:6px;
+  }
+  .hero__meta-price{ font-size:18px; }
+  .hero__group{ max-width:none; }
+  .hero__title{ font-size:clamp(40px, 10.5vw, 82px); }
+}
+@media (max-width:560px){
   .hero{ min-height:560px; }
-  .hero__inner{ padding:100px 20px 40px; }
-  .hero__eyebrow::before, .hero__eyebrow::after{ width:18px; }
-  .hero__eyebrow{ gap:10px; font-size:10px; letter-spacing:.24em; }
+  .hero__inner{ padding:96px 22px 52px; }
+  .hero__rule{ left:22px; right:22px; bottom:24px; }
+  .hero__meta{ font-size:10px; gap:6px; }
+  .hero__meta-price{ font-size:16px; }
+  .hero__eyebrow::before{ width:28px; }
+  .hero__eyebrow{ gap:10px; font-size:10px; letter-spacing:.22em; }
+  .hero__group{ gap:18px; }
+  .hero__title{ font-size:clamp(38px, 13vw, 68px); }
 }
 
 /* ───────────────────────────────────────────────────────────
    Shared section primitives
    ─────────────────────────────────────────────────────────── */
-.sec{ position:relative; padding:140px 40px; }
-.sec--tight{ padding:88px 40px; }
-@media (max-width:780px){ .sec{ padding:80px 20px; } }
-@media (max-width:480px){ .sec{ padding:64px 18px; } }
+.sec{ position:relative; padding:160px 56px; }
+.sec--tight{ padding:96px 56px; }
+@media (max-width:1100px){
+  .sec{ padding:140px 40px; }
+  .sec--tight{ padding:88px 40px; }
+}
+@media (max-width:780px){ .sec{ padding:96px 22px; } }
+@media (max-width:480px){ .sec{ padding:72px 18px; } }
 
 .label{
   font-family:var(--mono); font-size:11px;
@@ -446,12 +439,25 @@ body::after{
   z-index:2;
 }
 .figure__cap{
-  position:absolute; left:14px; bottom:14px;
+  position:absolute; left:16px; bottom:16px;
   font-family:var(--mono); font-size:10px;
-  letter-spacing:.22em; text-transform:uppercase; color:var(--type);
-  background:rgba(1,33,105,.55); padding:6px 10px;
-  backdrop-filter:blur(8px); z-index:3;
+  letter-spacing:.24em; text-transform:uppercase;
+  color:rgba(244,247,251,.92);
+  z-index:3;
+  display:flex; align-items:center; gap:10px;
+  text-shadow:0 1px 8px rgba(10,23,48,.6);
 }
+.figure__cap::before{
+  content:""; width:18px; height:1px;
+  background:var(--cb-celestial);
+}
+.figure::after{
+  content:""; position:absolute; left:0; right:0; bottom:0;
+  height:42%;
+  background:linear-gradient(to bottom, transparent, rgba(10,23,48,.55));
+  pointer-events:none; z-index:2;
+}
+.figure:not(:has(.figure__cap))::after{ display:none; }
 
 .ar-3-4{ aspect-ratio:3/4; }
 .ar-4-5{ aspect-ratio:4/5; }
@@ -689,6 +695,16 @@ body::after{
 .contact__rhs{ display:flex; flex-direction:column; gap:40px; }
 .agent{ padding-bottom:28px; border-bottom:1px solid var(--line); }
 .agent:last-child{ border-bottom:0; }
+.agent--brokerage{
+  margin-top:24px; padding-top:36px; padding-bottom:0;
+  border-top:1px solid var(--line); border-bottom:0;
+  display:flex; flex-direction:column; align-items:flex-start;
+}
+.agent--brokerage .agent__role{
+  max-width:42ch;
+  font-family:var(--body); text-transform:none; letter-spacing:.02em;
+  font-size:13px; line-height:1.6; color:var(--type-dim);
+}
 .agent__name{
   font-family:var(--display); font-weight:300;
   font-size:clamp(28px, 3vw, 42px);
@@ -734,8 +750,6 @@ body::after{
   padding-bottom:32px; border-bottom:1px solid rgba(255,255,255,.18);
   gap:24px; flex-wrap:wrap;
 }
-.foot__brand .cb-mark__wordmark .cb-mark__line1{ color:rgba(255,255,255,.7); }
-.foot__brand .cb-mark__wordmark .cb-mark__line2{ color:#fff; }
 .foot__brand-right{
   display:flex; align-items:center; gap:24px;
   font-family:var(--mono); font-size:10px;
@@ -802,38 +816,6 @@ body::after{
 </head>
 <body>
 
-<!-- CB monogram (white silhouette star, per brand standards: monogram on dark) -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <!-- CB Star/Monogram: white star + "CB" mark on transparent/dark, white on dark -->
-    <symbol id="cb-monogram" viewBox="0 0 64 64">
-      <g fill="currentColor">
-        <!-- North Star (5-point) -->
-        <path d="M32 6 L34.6 18.6 L47.5 18.5 L37.2 26.1 L41.1 38.4 L32 30.8 L22.9 38.4 L26.8 26.1 L16.5 18.5 L29.4 18.6 Z" opacity="0.95"/>
-        <!-- CB letters beneath -->
-        <text x="32" y="58" text-anchor="middle"
-              font-family="Georgia, 'Times New Roman', serif"
-              font-size="20" font-weight="700"
-              letter-spacing="-0.5">CB</text>
-      </g>
-    </symbol>
-    <!-- Framed: CB Blue square with white monogram inside -->
-    <symbol id="cb-framed" viewBox="0 0 64 64">
-      <rect width="64" height="64" fill="#012169"/>
-      <g fill="#ffffff" transform="translate(0,0)">
-        <path d="M32 8 L34.4 18.4 L45.4 18.3 L36.6 24.9 L40 35.4 L32 28.9 L24 35.4 L27.4 24.9 L18.6 18.3 L29.6 18.4 Z"/>
-        <text x="32" y="52" text-anchor="middle"
-              font-family="Georgia, 'Times New Roman', serif"
-              font-size="17" font-weight="700"
-              letter-spacing="-0.5">CB</text>
-      </g>
-    </symbol>
-  </defs>
-</svg>
-
-<!-- cursor -->
-<div class="cursor" id="cursor"></div>
-
 <!-- intro -->
 <div class="intro" id="intro">
   <div class="intro__line" id="introLine"></div>
@@ -843,39 +825,36 @@ body::after{
 
 <!-- nav -->
 <nav class="nav" id="nav">
-  <a href="#hero" class="cb-mark" aria-label="Coldwell Banker Select — Home">
-    <svg class="cb-mark__monogram" aria-hidden="true"><use href="#cb-monogram"/></svg>
-    <span class="cb-mark__wordmark">
-      <span class="cb-mark__line1">Coldwell Banker<sup style="font-size:.6em">&reg;</sup></span>
-      <span class="cb-mark__line2">Select<span class="cb-mark__sub">&nbsp;·&nbsp;NICO Group</span></span>
-    </span>
+  <a href="#hero" class="cb-logo cb-logo--nav" aria-label="Coldwell Banker Select — Home">
+    <img src="./assets/logo/Logo_133009_Select_HZ_W_MO.png"
+         alt="Coldwell Banker Select"
+         width="353" height="36" />
   </a>
   <div class="nav__center">11147 S Quebec · A Private Estate</div>
   <div class="nav__right">
-    <a href="#gallery" class="nav__link" data-hover>Gallery</a>
-    <a href="#plans" class="nav__link" data-hover>Plans</a>
-    <a href="#contact" class="nav__link" data-hover>Inquire</a>
+    <a href="#gallery" class="nav__link">Gallery</a>
+    <a href="#plans"   class="nav__link">Plans</a>
+    <a href="#contact" class="nav__link">Inquire</a>
   </div>
 </nav>
 
 <!-- hero -->
 <section class="hero" id="hero">
-  <div class="hero__media" id="heroMedia" style="background-image:url('./images/property/01-2.jpg')"></div>
+  <div class="hero__media" id="heroMedia" style="background-image:url('./assets/images/property/01-2.jpg')"></div>
   <div class="hero__inner">
-    <div></div>
     <div class="hero__group">
-      <div class="hero__eyebrow" id="heroEyebrow">South Tulsa · Whit-Acres</div>
+      <div class="hero__eyebrow" id="heroEyebrow">South Tulsa &nbsp;·&nbsp; Whit-Acres &nbsp;/&nbsp; Private Offering</div>
       <h1 class="hero__title">
         <span class="split-line"><span class="split-line__inner" id="heroL1">An English</span></span>
         <span class="split-line"><span class="split-line__inner" id="heroL2">manor, <em>reimagined.</em></span></span>
       </h1>
-      <div class="hero__sub" id="heroSub">11147 S Quebec Avenue · Tulsa, OK 74137</div>
     </div>
-    <div class="hero__scroll" id="heroScroll">
-      <div class="hero__scroll-line"></div>
-      <span>Scroll</span>
+    <div class="hero__meta" id="heroMeta">
+      <span class="hero__meta-address">11147 S Quebec Avenue &nbsp;·&nbsp; Tulsa, OK 74137</span>
+      <span class="hero__meta-price">Offered at $6,500,000</span>
     </div>
   </div>
+  <div class="hero__rule" id="heroRule"></div>
 </section>
 
 <!-- invitation -->
@@ -909,7 +888,7 @@ body::after{
 <section class="expand" id="architecture">
   <div class="expand__pin">
     <div class="expand__frame" id="expandFrame">
-      <div class="expand__media" id="expandMedia" style="background-image:url('./images/property/03-601.jpg')"></div>
+      <div class="expand__media" id="expandMedia" style="background-image:url('./assets/images/property/03-601.jpg')"></div>
     </div>
     <div class="expand__copy">
       <div class="label label--center fade-up">I · Architecture</div>
@@ -955,12 +934,12 @@ body::after{
   <div class="diptych diptych--offset">
     <div class="figure ar-4-5" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/02-100copy.jpg" alt="Estate by daylight" loading="lazy" />
+      <img src="./assets/images/property/02-100copy.jpg" alt="Estate by daylight" loading="lazy" />
       <div class="figure__cap">Manor · Mature Oaks</div>
     </div>
     <div class="figure ar-4-5" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/03-601.jpg" alt="Front façade by daylight" loading="lazy" />
+      <img src="./assets/images/property/03-601.jpg" alt="Front façade by daylight" loading="lazy" />
       <div class="figure__cap">Façade · Daylight</div>
     </div>
   </div>
@@ -995,17 +974,17 @@ body::after{
   <div class="tri">
     <div class="figure ar-3-4" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/06-117.jpg" alt="Foyer with arched entry" loading="lazy" />
+      <img src="./assets/images/property/06-117.jpg" alt="Foyer with arched entry" loading="lazy" />
       <div class="figure__cap">Foyer · Arched Entry</div>
     </div>
     <div class="figure ar-3-2" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/10-137.jpg" alt="Library with marble fireplace" loading="lazy" />
+      <img src="./assets/images/property/10-137.jpg" alt="Library with marble fireplace" loading="lazy" />
       <div class="figure__cap">Library · Marble Fireplace</div>
     </div>
     <div class="figure ar-3-2" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/11-142.jpg" alt="Formal living" loading="lazy" />
+      <img src="./assets/images/property/11-142.jpg" alt="Formal living" loading="lazy" />
       <div class="figure__cap">Formal Living</div>
     </div>
   </div>
@@ -1040,7 +1019,7 @@ body::after{
 
 <!-- kitchen feature wide -->
 <section class="wide-figure">
-  <div class="wide-figure__img" id="wideKitchen" style="background-image:url('./images/property/15-162.jpg')"></div>
+  <div class="wide-figure__img" id="wideKitchen" style="background-image:url('./assets/images/property/15-162.jpg')"></div>
   <div class="wide-figure__cap">III · Gourmet Kitchen</div>
 </section>
 
@@ -1077,12 +1056,12 @@ body::after{
   <div class="diptych">
     <div class="figure ar-5-4" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/17-175.jpg" alt="Kitchen detail" loading="lazy" />
+      <img src="./assets/images/property/17-175.jpg" alt="Kitchen detail" loading="lazy" />
       <div class="figure__cap">Marble · LaCanche</div>
     </div>
     <div class="figure ar-5-4" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/18-183.jpg" alt="Kitchen detail" loading="lazy" />
+      <img src="./assets/images/property/18-183.jpg" alt="Kitchen detail" loading="lazy" />
       <div class="figure__cap">Bespoke Millwork</div>
     </div>
   </div>
@@ -1106,7 +1085,7 @@ body::after{
     <div>
       <div class="figure ar-4-3 fade-up" data-hover>
         <div class="figure__veil"></div>
-        <img src="./images/property/12-148.jpg" alt="Executive office" loading="lazy" />
+        <img src="./assets/images/property/12-148.jpg" alt="Executive office" loading="lazy" />
         <div class="figure__cap">Library · Office</div>
       </div>
     </div>
@@ -1115,7 +1094,7 @@ body::after{
 
 <!-- primary suite full-bleed -->
 <section class="fb" id="primary">
-  <div class="fb__img" id="primaryImg" style="background-image:url('./images/property/27-227.jpg')"></div>
+  <div class="fb__img" id="primaryImg" style="background-image:url('./assets/images/property/27-227.jpg')"></div>
   <div class="fb__inner">
     <div class="label fade-up">V · Primary Suite</div>
     <h2 class="display display--xl fade-up">
@@ -1157,17 +1136,17 @@ body::after{
   <div class="tri">
     <div class="figure ar-3-4" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/31-255.jpg" alt="Primary bath soaker tub" loading="lazy" />
+      <img src="./assets/images/property/31-255.jpg" alt="Primary bath soaker tub" loading="lazy" />
       <div class="figure__cap">Soaking Tub · Bath</div>
     </div>
     <div class="figure ar-3-2" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/30-251.jpg" alt="Primary bath vanity" loading="lazy" />
+      <img src="./assets/images/property/30-251.jpg" alt="Primary bath vanity" loading="lazy" />
       <div class="figure__cap">Vanity · Marble</div>
     </div>
     <div class="figure ar-3-2" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/33-267.jpg" alt="Dual closet with glass-front cabinetry" loading="lazy" />
+      <img src="./assets/images/property/33-267.jpg" alt="Dual closet with glass-front cabinetry" loading="lazy" />
       <div class="figure__cap">Dual Closet</div>
     </div>
   </div>
@@ -1202,7 +1181,7 @@ body::after{
 
 <!-- theatre feature -->
 <section class="wide-figure">
-  <div class="wide-figure__img" id="wideTheatre" style="background-image:url('./images/property/52-387.jpg')"></div>
+  <div class="wide-figure__img" id="wideTheatre" style="background-image:url('./assets/images/property/52-387.jpg')"></div>
   <div class="wide-figure__cap">Theatre · Marantz Cinema</div>
 </section>
 
@@ -1228,7 +1207,7 @@ body::after{
 
 <!-- pool / outdoor -->
 <section class="fb" id="outdoor">
-  <div class="fb__img" id="poolImg" style="background-image:url('./images/property/60-400.jpg')"></div>
+  <div class="fb__img" id="poolImg" style="background-image:url('./assets/images/property/60-400.jpg')"></div>
   <div class="fb__inner">
     <div class="label fade-up">VII · Outdoor Living</div>
     <h2 class="display display--xl fade-up">
@@ -1248,12 +1227,12 @@ body::after{
   <div class="diptych diptych--offset">
     <div class="figure ar-4-5" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/61-420.jpg" alt="Pool with manor backdrop" loading="lazy" />
+      <img src="./assets/images/property/61-420.jpg" alt="Pool with manor backdrop" loading="lazy" />
       <div class="figure__cap">Pool · Manor View</div>
     </div>
     <div class="figure ar-4-5" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/63-800.jpg" alt="Backyard playhouse" loading="lazy" />
+      <img src="./assets/images/property/63-800.jpg" alt="Backyard playhouse" loading="lazy" />
       <div class="figure__cap">Playhouse · Garden</div>
     </div>
   </div>
@@ -1275,7 +1254,7 @@ body::after{
 
 <!-- aerial -->
 <section class="wide-figure">
-  <div class="wide-figure__img" id="wideAerial" style="background-image:url('./images/property/68-500.jpg')"></div>
+  <div class="wide-figure__img" id="wideAerial" style="background-image:url('./assets/images/property/68-500.jpg')"></div>
   <div class="wide-figure__cap">Aerial · 3.2 Acres</div>
 </section>
 
@@ -1300,39 +1279,39 @@ body::after{
   <div class="gal">
     <div class="figure g-a" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/08-128.jpg" alt="Great room" loading="lazy" />
+      <img src="./assets/images/property/08-128.jpg" alt="Great room" loading="lazy" />
     </div>
     <div class="figure g-b" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/19-188.jpg" alt="Formal living with marble fireplace" loading="lazy" />
+      <img src="./assets/images/property/19-188.jpg" alt="Formal living with marble fireplace" loading="lazy" />
     </div>
     <div class="figure g-c" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/16-168.jpg" alt="Kitchen island" loading="lazy" />
+      <img src="./assets/images/property/16-168.jpg" alt="Kitchen island" loading="lazy" />
     </div>
     <div class="figure g-d" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/20-192.jpg" alt="Dining" loading="lazy" />
+      <img src="./assets/images/property/20-192.jpg" alt="Dining" loading="lazy" />
     </div>
     <div class="figure g-e" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/22-203.jpg" alt="Family room" loading="lazy" />
+      <img src="./assets/images/property/22-203.jpg" alt="Family room" loading="lazy" />
     </div>
     <div class="figure g-f" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/28-238.jpg" alt="Primary bedroom" loading="lazy" />
+      <img src="./assets/images/property/28-238.jpg" alt="Primary bedroom" loading="lazy" />
     </div>
     <div class="figure g-g" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/28-238.jpg" alt="Suite passage to bath" loading="lazy" />
+      <img src="./assets/images/property/28-238.jpg" alt="Suite passage to bath" loading="lazy" />
     </div>
     <div class="figure g-h" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/13-151.jpg" alt="Gallery hallway" loading="lazy" />
+      <img src="./assets/images/property/13-151.jpg" alt="Gallery hallway" loading="lazy" />
     </div>
     <div class="figure g-i" data-hover>
       <div class="figure__veil"></div>
-      <img src="./images/property/70-600.jpg" alt="Estate at dusk" loading="lazy" />
+      <img src="./assets/images/property/70-600.jpg" alt="Estate at dusk" loading="lazy" />
     </div>
   </div>
 </section>
@@ -1374,9 +1353,9 @@ body::after{
       </button>
     </div>
     <div class="plan-pane">
-      <img src="./images/floorplans/floor-1.jpg"        alt="Main level floor plan" class="is-active" data-plan-img="0" />
-      <img src="./images/floorplans/floor-2.jpg"        alt="Upper level floor plan" data-plan-img="1" />
-      <img src="./images/floorplans/floor-basement.jpg" alt="Basement floor plan"    data-plan-img="2" />
+      <img src="./assets/images/floorplans/floor-1.jpg"        alt="Main level floor plan" class="is-active" data-plan-img="0" />
+      <img src="./assets/images/floorplans/floor-2.jpg"        alt="Upper level floor plan" data-plan-img="1" />
+      <img src="./assets/images/floorplans/floor-basement.jpg" alt="Basement floor plan"    data-plan-img="2" />
     </div>
   </div>
 </section>
@@ -1399,19 +1378,26 @@ body::after{
     <div class="contact__rhs">
       <div class="agent fade-up">
         <div class="agent__name">Janelle Nicolay</div>
-        <div class="agent__role">Listing Agent · NICO Group · Coldwell Banker<sup style="font-size:.6em">&reg;</sup> Select</div>
+        <div class="agent__role">Listing Agent &nbsp;·&nbsp; NICO Group</div>
         <div class="agent__links">
-          <a class="agent__link" href="tel:+19185503526" data-hover>(918) 550-3526</a>
-          <a class="agent__link" href="mailto:jnicolay@cbtulsa.com" data-hover>jnicolay@cbtulsa.com</a>
+          <a class="agent__link" href="tel:+19185503526">(918) 550-3526</a>
+          <a class="agent__link" href="mailto:jnicolay@cbtulsa.com">jnicolay@cbtulsa.com</a>
         </div>
       </div>
       <div class="agent fade-up">
         <div class="agent__name">Stuart Gallagher</div>
-        <div class="agent__role">Listing Agent · NICO Group · Coldwell Banker<sup style="font-size:.6em">&reg;</sup> Select</div>
+        <div class="agent__role">Listing Agent &nbsp;·&nbsp; NICO Group</div>
         <div class="agent__links">
-          <a class="agent__link" href="tel:+19186934860" data-hover>(918) 693-4860</a>
-          <a class="agent__link" href="mailto:sgallagher@cbtulsa.com" data-hover>sgallagher@cbtulsa.com</a>
+          <a class="agent__link" href="tel:+19186934860">(918) 693-4860</a>
+          <a class="agent__link" href="mailto:sgallagher@cbtulsa.com">sgallagher@cbtulsa.com</a>
         </div>
+      </div>
+      <div class="agent agent--brokerage fade-up">
+        <a href="#hero" class="cb-logo cb-logo--contact" aria-label="Coldwell Banker Select">
+          <img src="./assets/logo/Logo_133009_Select_HZ_W_MO.png"
+               alt="Coldwell Banker Select" width="471" height="48" />
+        </a>
+        <div class="agent__role" style="margin-top:16px">Offered by NICO Group, an affiliated team of Coldwell Banker<sup style="font-size:.6em">&reg;</sup> Select.</div>
       </div>
     </div>
   </div>
@@ -1420,12 +1406,9 @@ body::after{
 <!-- footer -->
 <footer class="foot">
   <div class="foot__brand">
-    <a href="#hero" class="cb-mark" aria-label="Coldwell Banker Select">
-      <svg class="cb-mark__monogram" style="color:#fff" aria-hidden="true"><use href="#cb-monogram"/></svg>
-      <span class="cb-mark__wordmark">
-        <span class="cb-mark__line1">Coldwell Banker<sup style="font-size:.6em">&reg;</sup></span>
-        <span class="cb-mark__line2">Select<span class="cb-mark__sub">&nbsp;·&nbsp;NICO Group</span></span>
-      </span>
+    <a href="#hero" class="cb-logo cb-logo--footer" aria-label="Coldwell Banker Select">
+      <img src="./assets/logo/Logo_133009_Select_HZ_W_MO.png"
+           alt="Coldwell Banker Select" width="451" height="46" />
     </a>
     <div class="foot__brand-right">
       <span>Equal Housing Opportunity</span>
@@ -1494,10 +1477,9 @@ body::after{
   const $  = (s, c=document) => c.querySelector(s);
   const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isTouch = window.matchMedia('(hover: none)').matches;
 
   gsap.registerPlugin(ScrollTrigger);
-  gsap.defaults({ ease: 'power3.out' });
+  gsap.defaults({ ease: 'expo.out' });
 
   /* ─── Lenis smooth scroll ─── */
   const lenis = new Lenis({
@@ -1525,29 +1507,6 @@ body::after{
     });
   });
 
-  /* ─── custom cursor (desktop only) ─── */
-  if(!isTouch){
-    const cursor = $('#cursor');
-    let cx=0, cy=0, tx=0, ty=0;
-    document.addEventListener('mousemove', (e)=>{
-      tx = e.clientX; ty = e.clientY;
-    });
-    function rafCursor(){
-      cx += (tx - cx) * 0.18;
-      cy += (ty - cy) * 0.18;
-      cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
-      requestAnimationFrame(rafCursor);
-    }
-    rafCursor();
-
-    document.addEventListener('mouseleave', ()=> cursor.classList.add('is-hidden'));
-    document.addEventListener('mouseenter', ()=> cursor.classList.remove('is-hidden'));
-    $$('[data-hover], a, button').forEach(el=>{
-      el.addEventListener('mouseenter', ()=> cursor.classList.add('is-hover'));
-      el.addEventListener('mouseleave', ()=> cursor.classList.remove('is-hover'));
-    });
-  }
-
   /* ─── intro / loader timeline ─── */
   const introTl = gsap.timeline({
     onComplete: ()=>{
@@ -1558,7 +1517,7 @@ body::after{
 
   // preload hero image
   const heroImg = new Image();
-  heroImg.src = './images/property/01-2.jpg';
+  heroImg.src = './assets/images/property/01-2.jpg';
 
   introTl
     .to('#introLine', { scaleY: 1, duration: 1.1, ease:'power3.inOut' })
@@ -1571,13 +1530,13 @@ body::after{
 
   /* ─── hero entrance ─── */
   function heroIn(){
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' }});
-    tl.from('#heroMedia', { scale: 1.18, opacity: 0, duration: 1.8, ease:'power2.out' }, 0)
-      .from('#heroEyebrow', { y:30, opacity:0, duration: 1.1 }, .3)
-      .from('#heroL1',  { yPercent:120, duration:1.1 }, .35)
-      .from('#heroL2',  { yPercent:120, duration:1.1 }, .45)
-      .from('#heroSub', { y:20, opacity:0, duration:.9 }, .9)
-      .from('#heroScroll', { opacity:0, y:10, duration:.9 }, 1.0);
+    const tl = gsap.timeline({ defaults: { ease: 'expo.out' }});
+    tl.from('#heroMedia',   { scale: 1.18, opacity: 0, duration: 2.0, ease:'power2.out' }, 0)
+      .from('#heroEyebrow', { y: 24, opacity: 0, duration: 1.1 }, .35)
+      .from('#heroL1',      { yPercent: 120, duration: 1.2 }, .40)
+      .from('#heroL2',      { yPercent: 120, duration: 1.2 }, .52)
+      .from('#heroMeta',    { y: 16, opacity: 0, duration: 1.0 }, 1.0)
+      .from('#heroRule',    { scaleX: 0, transformOrigin: 'left', duration: 1.2, ease:'expo.inOut' }, .9);
   }
 
   /* ─── nav: hide on scroll down, show on scroll up + scrolled state ─── */
@@ -1610,22 +1569,22 @@ body::after{
     });
   }
 
-  /* ─── invitation reveals ─── */
+  /* ─── invitation reveals ─── softer, opacity-led with minimal y-travel */
   function setupReveals(){
     $$('.fade-up').forEach(el=>{
       gsap.fromTo(el,
-        { opacity:0, y:32 },
+        { opacity:0, y:14 },
         {
-          opacity:1, y:0, duration:1.2, ease:'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 88%', once:true }
+          opacity:1, y:0, duration:1.0, ease:'expo.out',
+          scrollTrigger: { trigger: el, start: 'top 90%', once:true }
         });
     });
     $$('.fade-in').forEach(el=>{
       gsap.fromTo(el,
         { opacity:0 },
         {
-          opacity:1, duration:1.4,
-          scrollTrigger: { trigger: el, start: 'top 88%', once:true }
+          opacity:1, duration:1.2,
+          scrollTrigger: { trigger: el, start: 'top 90%', once:true }
         });
     });
   }
@@ -1633,7 +1592,7 @@ body::after{
 
   /* ─── stat counts: subtle reveal in sequence ─── */
   gsap.from('#stats .stat', {
-    y: 24, opacity: 0, duration: .9, stagger: .08, ease:'power3.out',
+    y: 16, opacity: 0, duration: .9, stagger: .08, ease:'expo.out',
     scrollTrigger: { trigger:'#stats', start:'top 80%', once:true }
   });
 
