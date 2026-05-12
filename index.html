@@ -1,0 +1,1517 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>11147 S Quebec Avenue — Tulsa</title>
+<meta name="description" content="An English manor estate, completely reimagined on 3.2 wooded acres in the gated Whit-Acres community of South Tulsa. 11147 South Quebec Avenue." />
+<meta property="og:title" content="11147 S Quebec Avenue — Tulsa" />
+<meta property="og:description" content="An English manor, reimagined. Six bedrooms, 3.2 wooded acres in gated Whit-Acres, South Tulsa." />
+<meta property="og:image" content="./images/property/01-2.jpg" />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,200..900,30..100,0..1;1,9..144,200..900,30..100,0..1&family=Inter+Tight:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&display=swap">
+
+<style>
+/* ───────────────────────────────────────────────────────────
+   tokens
+   ─────────────────────────────────────────────────────────── */
+:root{
+  --ink:        #0c0a08;
+  --ink-2:      #15110d;
+  --ink-3:      #1c1813;
+  --bone:       #ece4d6;
+  --bone-dim:   rgba(236,228,214,.62);
+  --bone-faint: rgba(236,228,214,.32);
+  --line:       rgba(236,228,214,.14);
+  --line-2:     rgba(236,228,214,.08);
+  --bronze:     #b08858;
+  --bronze-dim: rgba(176,136,88,.5);
+
+  --display: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  --body:    "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --mono:    "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  --ease:    cubic-bezier(.22,.61,.36,1);
+  --ease-out: cubic-bezier(.16,1,.3,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+html,body{
+  background:var(--ink);
+  color:var(--bone);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.55;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+}
+html{ scroll-behavior:auto; }
+body{ overflow-x:hidden; }
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{ background:var(--bronze); color:var(--ink); }
+
+/* grain */
+body::after{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:200;
+  opacity:.05; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* cursor */
+.cursor{
+  position:fixed; top:0; left:0;
+  width:8px; height:8px; border-radius:50%;
+  background:var(--bone); pointer-events:none; z-index:300;
+  mix-blend-mode:difference;
+  transform:translate(-50%,-50%);
+  transition:width .35s var(--ease), height .35s var(--ease), background .35s var(--ease);
+}
+.cursor.is-hover{ width:54px; height:54px; background:var(--bronze); }
+.cursor.is-hidden{ opacity:0; }
+@media (hover:none){ .cursor{display:none} }
+
+/* nav */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:grid; grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  padding:24px 40px;
+  font-family:var(--mono); font-size:11px;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--bone);
+  transition:transform .6s var(--ease);
+  mix-blend-mode:difference;
+}
+.nav.is-hidden{ transform:translateY(-100%); }
+.nav__left{ display:flex; gap:24px; align-items:center; }
+.nav__brand{ letter-spacing:.22em; }
+.nav__brand span{ color:var(--bronze); margin:0 6px; }
+.nav__center{ text-align:center; }
+.nav__right{ display:flex; gap:24px; justify-content:flex-end; }
+.nav__link{ transition:opacity .3s var(--ease); opacity:.62; }
+.nav__link:hover{ opacity:1; }
+@media (max-width:780px){
+  .nav{ padding:16px 20px; font-size:10px; grid-template-columns:1fr; justify-content:center; }
+  .nav__left, .nav__right{ display:none; }
+}
+
+/* intro loader */
+.intro{
+  position:fixed; inset:0; z-index:500;
+  background:var(--ink);
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:32px;
+}
+.intro__line{
+  width:1px; height:80px; background:var(--bronze);
+  transform-origin:top; transform:scaleY(0);
+}
+.intro__title{
+  font-family:var(--display);
+  font-weight:250;
+  font-size:clamp(28px, 4.5vw, 56px);
+  letter-spacing:-.015em;
+  font-variation-settings:"opsz" 144, "SOFT" 50, "WONK" 0;
+  text-align:center;
+  opacity:0;
+}
+.intro__title em{ font-style:italic; color:var(--bronze); font-weight:300; }
+.intro__sub{
+  font-family:var(--mono); font-size:11px;
+  letter-spacing:.32em; color:var(--bone-dim); text-transform:uppercase;
+  opacity:0;
+}
+.intro.is-done{ pointer-events:none; }
+
+/* hero */
+.hero{
+  position:relative; height:100vh; min-height:640px;
+  width:100%; overflow:hidden;
+}
+.hero__media{
+  position:absolute; inset:-5%;
+  background-size:cover; background-position:center 60%;
+  will-change:transform;
+}
+.hero__media::after{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(180deg,
+      rgba(12,10,8,.55) 0%,
+      rgba(12,10,8,.15) 35%,
+      rgba(12,10,8,.30) 70%,
+      rgba(12,10,8,.90) 100%);
+}
+.hero__inner{
+  position:relative; z-index:2; height:100%;
+  display:grid; grid-template-rows:1fr auto auto;
+  align-items:center; justify-items:center;
+  padding:120px 24px 56px; text-align:center;
+}
+.hero__group{
+  display:flex; flex-direction:column; align-items:center; gap:32px;
+  align-self:center;
+}
+.hero__eyebrow{
+  font-family:var(--mono); font-size:11px;
+  letter-spacing:.32em; text-transform:uppercase; color:var(--bone-dim);
+  display:flex; align-items:center; gap:14px;
+}
+.hero__eyebrow::before, .hero__eyebrow::after{
+  content:""; display:inline-block; width:32px; height:1px; background:var(--bronze-dim);
+}
+.hero__title{
+  font-family:var(--display);
+  font-weight:200;
+  font-size:clamp(44px, 9vw, 148px);
+  line-height:.92;
+  letter-spacing:-.035em;
+  margin-top:24px;
+  font-variation-settings:"opsz" 144, "SOFT" 100, "WONK" 1;
+  color:var(--bone);
+}
+.hero__title em{
+  font-style:italic; font-weight:250;
+  color:var(--bronze);
+  font-variation-settings:"opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.hero__sub{
+  margin-top:24px;
+  font-family:var(--mono); font-size:11px;
+  letter-spacing:.28em; text-transform:uppercase; color:var(--bone-dim);
+}
+.hero__scroll{
+  display:flex; flex-direction:column; align-items:center; gap:14px;
+  font-family:var(--mono); font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--bone-dim);
+}
+.hero__scroll-line{
+  width:1px; height:48px;
+  background:linear-gradient(to bottom, var(--bone-dim), transparent);
+  animation:scrollLine 2.4s var(--ease) infinite;
+}
+@keyframes scrollLine{
+  0%{ transform:scaleY(0); transform-origin:top; }
+  50%{ transform:scaleY(1); transform-origin:top; }
+  50.01%{ transform:scaleY(1); transform-origin:bottom; }
+  100%{ transform:scaleY(0); transform-origin:bottom; }
+}
+
+/* shared */
+.sec{ position:relative; padding:160px 40px; }
+.sec--tight{ padding:96px 40px; }
+@media (max-width:780px){ .sec{ padding:96px 20px; } }
+
+.label{
+  font-family:var(--mono); font-size:11px;
+  letter-spacing:.28em; text-transform:uppercase; color:var(--bone-dim);
+  display:inline-flex; align-items:center; gap:12px;
+}
+.label::before{
+  content:""; width:24px; height:1px; background:var(--bronze);
+}
+.label--center{ justify-content:center; }
+
+.display{
+  font-family:var(--display);
+  font-weight:250;
+  letter-spacing:-.025em;
+  font-variation-settings:"opsz" 144, "SOFT" 80, "WONK" 0;
+  line-height:1;
+}
+.display em{
+  font-style:italic; color:var(--bronze); font-weight:280;
+  font-variation-settings:"opsz" 144, "SOFT" 80, "WONK" 1;
+}
+.display--xl{ font-size:clamp(48px, 7.5vw, 110px); line-height:1.0; }
+.display--lg{ font-size:clamp(36px, 5.2vw, 80px); line-height:1.04; }
+.display--md{ font-size:clamp(28px, 3.6vw, 52px); line-height:1.08; }
+.display--sm{ font-size:clamp(22px, 2.4vw, 32px); line-height:1.18; }
+
+.lede{
+  font-weight:300;
+  font-size:clamp(15px, 1.1vw, 18px);
+  line-height:1.68;
+  color:var(--bone-dim);
+  max-width:62ch;
+}
+
+/* invitation */
+.invite{
+  padding:200px 40px 180px; text-align:center;
+  display:flex; flex-direction:column; align-items:center; gap:40px;
+}
+.invite__big{
+  font-family:var(--display);
+  font-weight:230;
+  font-size:clamp(32px, 4.6vw, 68px);
+  line-height:1.12;
+  letter-spacing:-.025em;
+  max-width:18ch;
+  font-variation-settings:"opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.invite__big em{
+  font-style:italic; color:var(--bronze); font-weight:280;
+  font-variation-settings:"opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.invite__rule{ width:1px; height:88px; background:var(--bronze-dim); transform-origin:top; }
+@media (max-width:780px){ .invite{ padding:120px 20px 100px; gap:32px; } }
+
+/* stats */
+.stats{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:56px 40px;
+  display:grid;
+  grid-template-columns:repeat(6, 1fr);
+  gap:32px;
+}
+.stat{ display:flex; flex-direction:column; gap:10px; }
+.stat__k{
+  font-family:var(--mono); font-size:10px;
+  letter-spacing:.24em; text-transform:uppercase; color:var(--bone-dim);
+}
+.stat__v{
+  font-family:var(--display);
+  font-weight:280;
+  font-size:clamp(22px, 1.9vw, 30px);
+  letter-spacing:-.015em;
+  color:var(--bone);
+  font-variation-settings:"opsz" 144, "SOFT" 60;
+}
+.stat__v small{
+  font-size:.55em; opacity:.7; margin-left:4px;
+  vertical-align:.25em; letter-spacing:.04em;
+}
+@media (max-width:1100px){ .stats{ grid-template-columns:repeat(3, 1fr); } }
+@media (max-width:560px){ .stats{ grid-template-columns:repeat(2, 1fr); padding:32px 20px; gap:24px; } }
+
+/* duo / two-col */
+.duo{
+  display:grid; grid-template-columns:1fr 1.2fr; gap:80px; align-items:start;
+}
+.duo__head{ position:sticky; top:120px; }
+.duo__copy p + p{ margin-top:1.3em; }
+.duo__copy{ max-width:60ch; }
+@media (max-width:980px){
+  .duo{ grid-template-columns:1fr; gap:48px; }
+  .duo__head{ position:static; }
+}
+
+/* figure */
+.figure{ position:relative; overflow:hidden; background:var(--ink-2); }
+.figure img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  will-change:transform;
+  transition:transform 1.2s var(--ease);
+}
+.figure[data-hover]:hover img{ transform:scale(1.04); }
+.figure__veil{
+  position:absolute; inset:0; background:var(--ink);
+  transform-origin:bottom; will-change:transform;
+  z-index:2;
+}
+.figure__cap{
+  position:absolute; left:16px; bottom:16px;
+  font-family:var(--mono); font-size:10px;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--bone);
+  background:rgba(12,10,8,.55); padding:6px 10px;
+  backdrop-filter:blur(8px); z-index:3;
+}
+
+.ar-3-4{ aspect-ratio:3/4; }
+.ar-4-5{ aspect-ratio:4/5; }
+.ar-5-4{ aspect-ratio:5/4; }
+.ar-4-3{ aspect-ratio:4/3; }
+.ar-16-9{ aspect-ratio:16/9; }
+.ar-3-2{ aspect-ratio:3/2; }
+.ar-2-3{ aspect-ratio:2/3; }
+.ar-1-1{ aspect-ratio:1/1; }
+
+/* expand (pinned image growth) */
+.expand{ position:relative; height:200vh; }
+.expand__pin{
+  position:sticky; top:0; height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.expand__frame{
+  position:absolute; inset:0;
+  clip-path:inset(12% 12% 12% 12%);
+  will-change:clip-path;
+}
+.expand__media{
+  position:absolute; inset:-5%;
+  background-size:cover; background-position:center;
+  will-change:transform;
+}
+.expand__media::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(12,10,8,.25), rgba(12,10,8,.45) 60%, rgba(12,10,8,.8) 100%);
+}
+.expand__copy{
+  position:relative; z-index:2;
+  text-align:center; padding:24px;
+  max-width:780px;
+  display:flex; flex-direction:column; align-items:center; gap:40px;
+}
+.expand__copy h2{ margin:0; }
+.expand__copy p{ margin:0; color:var(--bone); }
+
+/* highlights / numbered rows */
+.high{
+  display:grid; grid-template-columns:repeat(2, 1fr);
+  border-top:1px solid var(--line);
+}
+.high__row{
+  border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line);
+  padding:28px 28px 28px 0;
+  display:grid; grid-template-columns:48px 1fr;
+  gap:24px; align-items:baseline;
+}
+.high__row:nth-child(2n){ border-right:0; padding-right:0; }
+.high__row .n{
+  font-family:var(--mono); font-size:11px;
+  letter-spacing:.2em; color:var(--bronze);
+}
+.high__row p{
+  font-family:var(--display); font-weight:300;
+  font-size:clamp(17px, 1.3vw, 21px);
+  line-height:1.35;
+  font-variation-settings:"opsz" 144, "SOFT" 60;
+}
+@media (max-width:780px){
+  .high{ grid-template-columns:1fr; }
+  .high__row{ border-right:0; padding-right:0; }
+}
+
+/* wide figure (kitchen feature) */
+.wide-figure{
+  position:relative; width:100%;
+  height:90vh; min-height:600px; overflow:hidden;
+}
+.wide-figure__img{
+  position:absolute; inset:-8%;
+  background-size:cover; background-position:center;
+  will-change:transform;
+}
+.wide-figure__img::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, transparent 0%, transparent 60%, rgba(12,10,8,.6) 100%);
+}
+.wide-figure__cap{
+  position:absolute; bottom:48px; left:48px; z-index:2;
+  font-family:var(--mono); font-size:11px;
+  letter-spacing:.24em; text-transform:uppercase; color:var(--bone);
+  display:flex; align-items:center; gap:12px;
+}
+.wide-figure__cap::before{
+  content:""; width:32px; height:1px; background:var(--bronze);
+}
+@media (max-width:780px){
+  .wide-figure__cap{ bottom:24px; left:24px; font-size:10px; }
+}
+
+/* diptych */
+.diptych{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.diptych--offset .figure:first-child{ margin-top:96px; }
+.diptych--offset .figure:last-child{ margin-bottom:96px; }
+@media (max-width:780px){
+  .diptych{ grid-template-columns:1fr; }
+  .diptych--offset .figure:first-child, .diptych--offset .figure:last-child{ margin:0; }
+}
+
+/* triptych */
+.tri{ display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:24px; }
+.tri .figure:first-child{ grid-row:span 2; }
+@media (max-width:780px){
+  .tri{ grid-template-columns:1fr 1fr; }
+  .tri .figure:first-child{ grid-column:span 2; grid-row:auto; }
+}
+
+/* feats list */
+.feats{ list-style:none; display:flex; flex-direction:column; }
+.feats li{
+  display:grid; grid-template-columns:48px 1fr auto;
+  gap:24px; align-items:baseline;
+  padding:20px 0;
+  border-bottom:1px solid var(--line);
+  font-family:var(--display); font-weight:300;
+  font-size:clamp(16px, 1.3vw, 20px);
+  font-variation-settings:"opsz" 144;
+}
+.feats .num{
+  font-family:var(--mono); font-size:11px;
+  letter-spacing:.18em; color:var(--bronze);
+}
+.feats .mark{
+  font-family:var(--mono); font-size:10px;
+  letter-spacing:.18em; color:var(--bone-dim);
+  text-transform:uppercase;
+}
+
+/* fullbleed text-overlay */
+.fb{
+  position:relative; width:100%;
+  height:110vh; min-height:720px; overflow:hidden;
+}
+.fb__img{
+  position:absolute; inset:-8%;
+  background-size:cover; background-position:center;
+  will-change:transform;
+}
+.fb__img::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(12,10,8,.25), rgba(12,10,8,.4) 50%, rgba(12,10,8,.9) 100%);
+}
+.fb__inner{
+  position:relative; z-index:2; height:100%;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:80px 40px;
+}
+.fb__inner .label{ color:var(--bone); }
+.fb__inner h2{ max-width:18ch; margin-top:28px; color:var(--bone); }
+.fb__inner p{ max-width:48ch; margin-top:24px; color:var(--bone); opacity:.88; }
+@media (max-width:780px){
+  .fb__inner{ padding:60px 20px; }
+}
+
+/* gallery */
+.gal{ display:grid; grid-template-columns:repeat(12, 1fr); gap:16px; }
+.g-a{ grid-column:span 7; aspect-ratio:3/2; }
+.g-b{ grid-column:span 5; aspect-ratio:4/5; }
+.g-c{ grid-column:span 4; aspect-ratio:4/5; }
+.g-d{ grid-column:span 8; aspect-ratio:16/9; }
+.g-e{ grid-column:span 6; aspect-ratio:5/4; }
+.g-f{ grid-column:span 6; aspect-ratio:5/4; }
+.g-g{ grid-column:span 5; aspect-ratio:4/5; }
+.g-h{ grid-column:span 7; aspect-ratio:3/2; }
+.g-i{ grid-column:span 12; aspect-ratio:21/9; }
+@media (max-width:780px){
+  .gal{ grid-template-columns:1fr; gap:12px; }
+  .gal .figure{ grid-column:auto; aspect-ratio:4/5; }
+}
+
+/* floor plans */
+.plans{
+  display:grid; grid-template-columns:320px 1fr; gap:60px; align-items:start;
+}
+.plans__tabs{ display:flex; flex-direction:column; }
+.plan-tab{
+  display:grid; grid-template-columns:32px 1fr auto;
+  gap:16px; align-items:baseline;
+  text-align:left; padding:24px 0;
+  border-top:1px solid var(--line);
+  color:var(--bone-dim);
+  transition:color .3s var(--ease);
+  width:100%;
+}
+.plan-tab:last-of-type{ border-bottom:1px solid var(--line); }
+.plan-tab .n{ font-family:var(--mono); font-size:11px; letter-spacing:.18em; }
+.plan-tab .name{
+  font-family:var(--display); font-size:22px; font-weight:300;
+  font-variation-settings:"opsz" 144;
+}
+.plan-tab .meta{
+  font-family:var(--mono); font-size:10px;
+  letter-spacing:.18em; text-transform:uppercase;
+}
+.plan-tab.is-active{ color:var(--bone); }
+.plan-tab.is-active .n{ color:var(--bronze); }
+
+.plan-pane{
+  position:relative; background:#f5efe4;
+  overflow:hidden; aspect-ratio:4/3;
+  border:1px solid var(--line);
+}
+.plan-pane img{
+  position:absolute; inset:0;
+  width:100%; height:100%; object-fit:contain;
+  padding:32px; opacity:0;
+  transition:opacity .6s var(--ease);
+}
+.plan-pane img.is-active{ opacity:1; }
+
+@media (max-width:780px){
+  .plans{ grid-template-columns:1fr; gap:24px; }
+}
+
+/* contact */
+.contact{ display:grid; grid-template-columns:1fr 1fr; gap:80px; }
+.contact__lhs h2{ max-width:14ch; }
+.contact__lhs p{ margin-top:28px; max-width:48ch; }
+.contact__rhs{ display:flex; flex-direction:column; gap:48px; }
+.agent{ padding-bottom:32px; border-bottom:1px solid var(--line); }
+.agent:last-child{ border-bottom:0; }
+.agent__name{
+  font-family:var(--display); font-weight:280;
+  font-size:clamp(30px, 3vw, 42px);
+  letter-spacing:-.02em;
+  font-variation-settings:"opsz" 144, "SOFT" 60;
+}
+.agent__role{
+  font-family:var(--mono); font-size:11px;
+  letter-spacing:.2em; color:var(--bone-dim);
+  text-transform:uppercase; margin-top:8px;
+}
+.agent__links{ display:flex; flex-direction:column; gap:10px; margin-top:24px; }
+.agent__link{
+  font-family:var(--display); font-weight:300; font-size:19px;
+  font-variation-settings:"opsz" 144;
+  display:inline-flex; align-items:center; gap:12px;
+  transition:color .3s var(--ease);
+  width:max-content;
+}
+.agent__link::before{
+  content:"→"; color:var(--bronze);
+  transition:transform .3s var(--ease);
+}
+.agent__link:hover{ color:var(--bronze); }
+.agent__link:hover::before{ transform:translateX(4px); }
+@media (max-width:780px){ .contact{ grid-template-columns:1fr; gap:48px; } }
+
+/* footer */
+.foot{
+  padding:80px 40px 56px;
+  border-top:1px solid var(--line);
+  display:grid; grid-template-columns:1fr 1fr; gap:48px;
+  font-family:var(--mono); font-size:11px;
+  letter-spacing:.16em; color:var(--bone-dim); text-transform:uppercase;
+}
+.foot__lhs{ display:flex; flex-direction:column; gap:10px; }
+.foot__rhs{ text-align:right; display:flex; flex-direction:column; gap:10px; align-items:flex-end; }
+.foot__disclaimer{
+  grid-column:1/-1; margin-top:48px; padding-top:32px;
+  border-top:1px solid var(--line-2);
+  font-family:var(--body); font-size:11px; font-weight:300;
+  letter-spacing:.01em; line-height:1.7;
+  text-transform:none; color:var(--bone-faint);
+  max-width:90ch;
+}
+.foot__kk{
+  grid-column:1/-1;
+  display:flex; justify-content:center;
+  margin-top:32px;
+  opacity:.22; transition:opacity .4s var(--ease);
+}
+.foot__kk:hover{ opacity:.6; }
+.foot__kk .kk-wm{
+  font-family:var(--mono); font-size:10px;
+  letter-spacing:.32em; color:var(--bone);
+  text-transform:uppercase;
+}
+@media (max-width:780px){
+  .foot{ grid-template-columns:1fr; padding:64px 20px 40px; }
+  .foot__rhs{ text-align:left; align-items:flex-start; }
+}
+
+/* utilities */
+.split-line{ display:block; overflow:hidden; }
+.split-line__inner{ display:inline-block; will-change:transform; }
+.fade-up{ opacity:0; transform:translateY(28px); will-change:transform, opacity; }
+.fade-in{ opacity:0; will-change:opacity; }
+.bronze{ color:var(--bronze); }
+
+/* if JS fails, reveal everything so page is still readable */
+.no-js .fade-up, .no-js .fade-in,
+.no-js .split-line__inner{
+  opacity:1 !important; transform:none !important;
+}
+.no-js .intro{ display:none !important; }
+.no-js .figure__veil{ display:none !important; }
+.no-js .expand__frame{ clip-path:none !important; }
+
+/* reduced motion */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    transition-duration:.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- cursor -->
+<div class="cursor" id="cursor"></div>
+
+<!-- intro -->
+<div class="intro" id="intro">
+  <div class="intro__line" id="introLine"></div>
+  <div class="intro__title" id="introTitle">An English manor, <em>reimagined.</em></div>
+  <div class="intro__sub" id="introSub">11147 South Quebec · Tulsa</div>
+</div>
+
+<!-- nav -->
+<nav class="nav" id="nav">
+  <div class="nav__left">
+    <span class="nav__brand">11147<span>·</span>S QUEBEC</span>
+  </div>
+  <div class="nav__center">A PRIVATE ESTATE</div>
+  <div class="nav__right">
+    <a href="#contact" class="nav__link" data-hover>Inquire</a>
+  </div>
+</nav>
+
+<!-- hero -->
+<section class="hero" id="hero">
+  <div class="hero__media" id="heroMedia" style="background-image:url('./images/property/01-2.jpg')"></div>
+  <div class="hero__inner">
+    <div></div>
+    <div class="hero__group">
+      <div class="hero__eyebrow" id="heroEyebrow">South Tulsa · Whit-Acres</div>
+      <h1 class="hero__title">
+        <span class="split-line"><span class="split-line__inner" id="heroL1">An English</span></span>
+        <span class="split-line"><span class="split-line__inner" id="heroL2">manor, <em>reimagined.</em></span></span>
+      </h1>
+      <div class="hero__sub" id="heroSub">11147 S Quebec Avenue · Tulsa, OK 74137</div>
+    </div>
+    <div class="hero__scroll" id="heroScroll">
+      <div class="hero__scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </div>
+</section>
+
+<!-- invitation -->
+<section class="invite" id="invite">
+  <div class="label fade-up">The Estate</div>
+  <h2 class="invite__big fade-up">
+    Beneath mature oaks on
+    <em>3.2 private acres,</em>
+    a residence transformed —
+    inside and out.
+  </h2>
+  <div class="invite__rule fade-up"></div>
+  <p class="lede fade-up" style="text-align:center">
+    Located within the prestigious gated community of Whit-Acres in South Tulsa, this extraordinary English
+    manor-inspired estate has been completely transformed into a world-class luxury residence — blending
+    timeless architecture with modern sophistication.
+  </p>
+</section>
+
+<!-- stats -->
+<div class="stats" id="stats">
+  <div class="stat"><div class="stat__k">Bedrooms</div><div class="stat__v">6</div></div>
+  <div class="stat"><div class="stat__k">Bathrooms</div><div class="stat__v">3 <small>full</small> · 2 <small>half</small></div></div>
+  <div class="stat"><div class="stat__k">Living Area</div><div class="stat__v">10,977 <small>sqft</small></div></div>
+  <div class="stat"><div class="stat__k">Acreage</div><div class="stat__v">3.2 <small>ac ±</small></div></div>
+  <div class="stat"><div class="stat__k">Garage</div><div class="stat__v">4 <small>car</small></div></div>
+  <div class="stat"><div class="stat__k">Offered At</div><div class="stat__v">$6,500,000</div></div>
+</div>
+
+<!-- architecture (pinned expand) -->
+<section class="expand" id="architecture">
+  <div class="expand__pin">
+    <div class="expand__frame" id="expandFrame">
+      <div class="expand__media" id="expandMedia" style="background-image:url('./images/property/03-601.jpg')"></div>
+    </div>
+    <div class="expand__copy">
+      <div class="label label--center fade-up">I · Architecture</div>
+      <h2 class="display display--xl fade-up">
+        Timeless English<br>manor, <em>commanding<br>arrival.</em>
+      </h2>
+      <p class="lede fade-up" style="color:var(--bone)">
+        Authentic detailing and carefully curated exterior materials — copper gutters, cedar siding,
+        custom 9&prime; × 8&prime; steel front entry — reflect classic European inspiration, layered with modern luxury.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- exterior highlights -->
+<section class="sec">
+  <div class="duo">
+    <div class="duo__head">
+      <div class="label fade-up">Estate-scale arrival</div>
+      <h2 class="display display--lg fade-up" style="margin-top:32px">
+        The first<br>impression,<br><em>set in stone.</em>
+      </h2>
+    </div>
+    <div class="duo__copy">
+      <p class="lede fade-up">
+        The estate makes a commanding first impression with authentic architectural detailing and carefully
+        curated exterior materials that reflect classic European inspiration while incorporating modern luxury elements.
+      </p>
+      <ol class="high" style="margin-top:48px">
+        <li class="high__row fade-up"><span class="n">01</span><p>Custom 9&prime; × 8&prime; steel front entry door</p></li>
+        <li class="high__row fade-up"><span class="n">02</span><p>Handcrafted iron staircase</p></li>
+        <li class="high__row fade-up"><span class="n">03</span><p>Copper gutters &amp; cedar siding</p></li>
+        <li class="high__row fade-up"><span class="n">04</span><p>Class 4 impact-resistant Belmont roof</p></li>
+        <li class="high__row fade-up"><span class="n">05</span><p>Mature trees on a private wooded setting</p></li>
+        <li class="high__row fade-up"><span class="n">06</span><p>Gated Whit-Acres community</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- exterior diptych -->
+<section class="sec" style="padding-top:0">
+  <div class="diptych diptych--offset">
+    <div class="figure ar-4-5" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/02-100copy.jpg" alt="Estate by daylight" loading="lazy" />
+      <div class="figure__cap">Manor · Mature Oaks</div>
+    </div>
+    <div class="figure ar-4-5" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/03-601.jpg" alt="Front façade by daylight" loading="lazy" />
+      <div class="figure__cap">Façade · Daylight</div>
+    </div>
+  </div>
+</section>
+
+<!-- interior overture -->
+<section class="sec" id="interior">
+  <div class="duo">
+    <div class="duo__head">
+      <div class="label fade-up">II · Interior Living</div>
+      <h2 class="display display--lg fade-up" style="margin-top:32px">
+        Grand spaces,<br>
+        <em>refined every inch.</em>
+      </h2>
+    </div>
+    <div class="duo__copy">
+      <p class="lede fade-up">
+        Spanning approximately 10,977 square feet, the residence has been meticulously reimagined with
+        no-expense-spared renovations — integrating elevated finishes, designer materials and cutting-edge
+        systems throughout.
+      </p>
+      <p class="lede fade-up">
+        Marble-surround fireplaces, level-5 smooth-finish walls, 7-inch white oak hardwood flooring, and
+        custom millwork create a cohesive luxury aesthetic for refined entertaining and easy daily living.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- foyer / formal living -->
+<section class="sec" style="padding-top:0">
+  <div class="tri">
+    <div class="figure ar-3-4" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/06-117.jpg" alt="Foyer with arched entry" loading="lazy" />
+      <div class="figure__cap">Foyer · Arched Entry</div>
+    </div>
+    <div class="figure ar-3-2" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/10-137.jpg" alt="Library with marble fireplace" loading="lazy" />
+      <div class="figure__cap">Library · Marble Fireplace</div>
+    </div>
+    <div class="figure ar-3-2" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/11-142.jpg" alt="Formal living" loading="lazy" />
+      <div class="figure__cap">Formal Living</div>
+    </div>
+  </div>
+</section>
+
+<!-- elevated materials -->
+<section class="sec">
+  <div class="duo">
+    <div class="duo__head">
+      <div class="label fade-up">Elevated · Designer Materials</div>
+      <h2 class="display display--md fade-up" style="margin-top:32px">
+        Marble from Turkey.<br>
+        Crystallo countertops.<br>
+        <em>Quiet excellence,</em><br>
+        throughout.
+      </h2>
+    </div>
+    <div class="duo__copy">
+      <ul class="feats fade-up">
+        <li><span class="num">A</span><span>Kolby windows throughout</span><span class="mark">Spec</span></li>
+        <li><span class="num">B</span><span>Five custom marble countertops, crafted in Turkey</span><span class="mark">Material</span></li>
+        <li><span class="num">C</span><span>Crystallo translucent countertops</span><span class="mark">Material</span></li>
+        <li><span class="num">D</span><span>Custom cabinetry &amp; vanities</span><span class="mark">Millwork</span></li>
+        <li><span class="num">E</span><span>Level 5 smooth-finish walls</span><span class="mark">Finish</span></li>
+        <li><span class="num">F</span><span>7&prime;&prime; white oak hardwood flooring</span><span class="mark">Floor</span></li>
+        <li><span class="num">G</span><span>Designer lighting package</span><span class="mark">Lighting</span></li>
+        <li><span class="num">H</span><span>New premium carpet throughout</span><span class="mark">Comfort</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- kitchen feature wide -->
+<section class="wide-figure">
+  <div class="wide-figure__img" id="wideKitchen" style="background-image:url('./images/property/15-162.jpg')"></div>
+  <div class="wide-figure__cap">III · Gourmet Kitchen</div>
+</section>
+
+<section class="sec">
+  <div class="duo">
+    <div class="duo__head">
+      <div class="label fade-up">A Defining Feature</div>
+      <h2 class="display display--lg fade-up" style="margin-top:32px">
+        The kitchen<br>
+        as <em>centerpiece.</em>
+      </h2>
+    </div>
+    <div class="duo__copy">
+      <p class="lede fade-up">
+        Designed as the centerpiece of the home, the main kitchen combines striking natural materials with
+        professional-grade appliances and bespoke craftsmanship — anchored by imported Namibia marble and
+        a custom French LaCanche range.
+      </p>
+
+      <ol class="high" style="margin-top:48px">
+        <li class="high__row fade-up"><span class="n">01</span><p>Imported Namibia marble countertops</p></li>
+        <li class="high__row fade-up"><span class="n">02</span><p>Custom French-made LaCanche gas &amp; induction range</p></li>
+        <li class="high__row fade-up"><span class="n">03</span><p>Subzero refrigeration · Thermador appliances</p></li>
+        <li class="high__row fade-up"><span class="n">04</span><p>Oversized entertaining layout</p></li>
+        <li class="high__row fade-up"><span class="n">05</span><p>Secondary prep kitchen with side-by-side fridge</p></li>
+        <li class="high__row fade-up"><span class="n">06</span><p>Extensive pantry storage &amp; wet bar</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- kitchen diptych -->
+<section class="sec" style="padding-top:0">
+  <div class="diptych">
+    <div class="figure ar-5-4" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/17-175.jpg" alt="Kitchen detail" loading="lazy" />
+      <div class="figure__cap">Marble · LaCanche</div>
+    </div>
+    <div class="figure ar-5-4" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/18-183.jpg" alt="Kitchen detail" loading="lazy" />
+      <div class="figure__cap">Bespoke Millwork</div>
+    </div>
+  </div>
+</section>
+
+<!-- executive office -->
+<section class="sec">
+  <div class="duo">
+    <div class="duo__head">
+      <div class="label fade-up">IV · Executive Office</div>
+      <h2 class="display display--lg fade-up" style="margin-top:32px">
+        A private,<br>
+        <em>distinguished</em><br>
+        workspace.
+      </h2>
+      <p class="lede fade-up" style="margin-top:32px">
+        Custom millwork and sophisticated built-ins frame a private office setting — ideal for business
+        leadership, focused work, or private meetings.
+      </p>
+    </div>
+    <div>
+      <div class="figure ar-4-3 fade-up" data-hover>
+        <div class="figure__veil"></div>
+        <img src="./images/property/12-148.jpg" alt="Executive office" loading="lazy" />
+        <div class="figure__cap">Library · Office</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- primary suite full-bleed -->
+<section class="fb" id="primary">
+  <div class="fb__img" id="primaryImg" style="background-image:url('./images/property/27-227.jpg')"></div>
+  <div class="fb__inner">
+    <div class="label fade-up">V · Primary Suite</div>
+    <h2 class="display display--xl fade-up">
+      A luxury<br>
+      <em>private sanctuary.</em>
+    </h2>
+    <p class="lede fade-up">
+      The primary suite serves as a tranquil retreat overlooking the resort-style grounds — combining
+      boutique-inspired design with spa-caliber amenities.
+    </p>
+  </div>
+</section>
+
+<!-- primary suite features -->
+<section class="sec">
+  <div class="duo">
+    <div class="duo__head">
+      <div class="label fade-up">Suite Features</div>
+      <h2 class="display display--md fade-up" style="margin-top:32px">
+        Spa-caliber.<br>
+        <em>Boutique-styled.</em>
+      </h2>
+    </div>
+    <div class="duo__copy">
+      <ul class="feats fade-up">
+        <li><span class="num">i</span><span>Resort-style pool views</span><span class="mark">Outlook</span></li>
+        <li><span class="num">ii</span><span>Waterfall views</span><span class="mark">Outlook</span></li>
+        <li><span class="num">iii</span><span>Boutique-style dual closets</span><span class="mark">Closet</span></li>
+        <li><span class="num">iv</span><span>Glass-front cabinetry</span><span class="mark">Closet</span></li>
+        <li><span class="num">v</span><span>Spa-inspired bath spaces</span><span class="mark">Bath</span></li>
+        <li><span class="num">vi</span><span>Elevated designer finishes</span><span class="mark">Finish</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- primary bath / closet triptych -->
+<section class="sec" style="padding-top:0">
+  <div class="tri">
+    <div class="figure ar-3-4" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/31-255.jpg" alt="Primary bath soaker tub" loading="lazy" />
+      <div class="figure__cap">Soaking Tub · Bath</div>
+    </div>
+    <div class="figure ar-3-2" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/30-251.jpg" alt="Primary bath vanity" loading="lazy" />
+      <div class="figure__cap">Vanity · Marble</div>
+    </div>
+    <div class="figure ar-3-2" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/33-267.jpg" alt="Dual closet with glass-front cabinetry" loading="lazy" />
+      <div class="figure__cap">Dual Closet</div>
+    </div>
+  </div>
+</section>
+
+<!-- upper level -->
+<section class="sec">
+  <div class="duo">
+    <div class="duo__head">
+      <div class="label fade-up">VI · Upper Level</div>
+      <h2 class="display display--lg fade-up" style="margin-top:32px">
+        Family &amp; guest<br>
+        <em>accommodations.</em>
+      </h2>
+      <p class="lede fade-up" style="margin-top:32px">
+        The upper level is designed for both comfort and entertainment, offering expansive private suites,
+        a large bunk room and dedicated media spaces.
+      </p>
+    </div>
+    <div class="duo__copy">
+      <ul class="feats fade-up">
+        <li><span class="num">01</span><span>Spacious bedroom suites</span><span class="mark">Bed</span></li>
+        <li><span class="num">02</span><span>Private en-suite baths</span><span class="mark">Bath</span></li>
+        <li><span class="num">03</span><span>Large bunk room</span><span class="mark">Family</span></li>
+        <li><span class="num">04</span><span>Professionally designed theatre room</span><span class="mark">Media</span></li>
+        <li><span class="num">05</span><span>Epson projection · Marantz Cinema</span><span class="mark">A/V</span></li>
+        <li><span class="num">06</span><span>Bowers &amp; Wilkins speakers · REL subwoofers</span><span class="mark">A/V</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- theatre feature -->
+<section class="wide-figure">
+  <div class="wide-figure__img" id="wideTheatre" style="background-image:url('./images/property/52-387.jpg')"></div>
+  <div class="wide-figure__cap">Theatre · Marantz Cinema</div>
+</section>
+
+<!-- guest suite -->
+<section class="sec">
+  <div class="duo">
+    <div class="duo__head">
+      <div class="label fade-up">Guest Accommodations</div>
+      <h2 class="display display--md fade-up" style="margin-top:32px">
+        Private<br>
+        <em>main-level suite,</em><br>
+        with its own entrance.
+      </h2>
+    </div>
+    <div class="duo__copy">
+      <p class="lede fade-up">
+        A separate main-level guest suite with private entrance offers ideal accommodations for visitors,
+        extended family or multigenerational living — flexible to many arrangements.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- pool / outdoor -->
+<section class="fb" id="outdoor">
+  <div class="fb__img" id="poolImg" style="background-image:url('./images/property/60-400.jpg')"></div>
+  <div class="fb__inner">
+    <div class="label fade-up">VII · Outdoor Living</div>
+    <h2 class="display display--xl fade-up">
+      A private<br>
+      <em>luxury resort.</em>
+    </h2>
+    <p class="lede fade-up">
+      The outdoor environment has been thoughtfully redesigned to rival a private resort — fully remodeled
+      swimming pool, spa with cascading waterfalls, outdoor kitchen, new landscaping and a charming
+      backyard playhouse.
+    </p>
+  </div>
+</section>
+
+<!-- outdoor diptych -->
+<section class="sec" style="padding-top:0">
+  <div class="diptych diptych--offset">
+    <div class="figure ar-4-5" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/61-420.jpg" alt="Pool with manor backdrop" loading="lazy" />
+      <div class="figure__cap">Pool · Manor View</div>
+    </div>
+    <div class="figure ar-4-5" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/63-800.jpg" alt="Backyard playhouse" loading="lazy" />
+      <div class="figure__cap">Playhouse · Garden</div>
+    </div>
+  </div>
+</section>
+
+<!-- outdoor features list -->
+<section class="sec" style="padding-top:0">
+  <ol class="high">
+    <li class="high__row fade-up"><span class="n">01</span><p>Fully remodeled swimming pool</p></li>
+    <li class="high__row fade-up"><span class="n">02</span><p>Spa with cascading waterfalls</p></li>
+    <li class="high__row fade-up"><span class="n">03</span><p>Outdoor kitchen</p></li>
+    <li class="high__row fade-up"><span class="n">04</span><p>Lounge &amp; entertaining areas</p></li>
+    <li class="high__row fade-up"><span class="n">05</span><p>New landscaping &amp; fresh sod</p></li>
+    <li class="high__row fade-up"><span class="n">06</span><p>Irrigation system upgrades</p></li>
+    <li class="high__row fade-up"><span class="n">07</span><p>Private wooded setting</p></li>
+    <li class="high__row fade-up"><span class="n">08</span><p>Charming backyard playhouse</p></li>
+  </ol>
+</section>
+
+<!-- aerial -->
+<section class="wide-figure">
+  <div class="wide-figure__img" id="wideAerial" style="background-image:url('./images/property/68-500.jpg')"></div>
+  <div class="wide-figure__cap">Aerial · 3.2 Acres</div>
+</section>
+
+<!-- gallery -->
+<section class="sec" id="gallery">
+  <div class="duo" style="margin-bottom:64px">
+    <div class="duo__head">
+      <div class="label fade-up">VIII · The Residence</div>
+      <h2 class="display display--lg fade-up" style="margin-top:32px">
+        Selected<br>
+        <em>moments.</em>
+      </h2>
+    </div>
+    <div class="duo__copy">
+      <p class="lede fade-up">
+        A closer look at the spaces, surfaces and quiet details that distinguish this estate. Click any image
+        to view it at full size — a complete portfolio is available on request.
+      </p>
+    </div>
+  </div>
+
+  <div class="gal">
+    <div class="figure g-a" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/08-128.jpg" alt="Great room" loading="lazy" />
+    </div>
+    <div class="figure g-b" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/19-188.jpg" alt="Formal living with marble fireplace" loading="lazy" />
+    </div>
+    <div class="figure g-c" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/16-168.jpg" alt="Kitchen island" loading="lazy" />
+    </div>
+    <div class="figure g-d" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/20-192.jpg" alt="Dining" loading="lazy" />
+    </div>
+    <div class="figure g-e" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/22-203.jpg" alt="Family room" loading="lazy" />
+    </div>
+    <div class="figure g-f" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/28-238.jpg" alt="Primary bedroom" loading="lazy" />
+    </div>
+    <div class="figure g-g" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/28-238.jpg" alt="Suite passage to bath" loading="lazy" />
+    </div>
+    <div class="figure g-h" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/13-151.jpg" alt="Gallery hallway" loading="lazy" />
+    </div>
+    <div class="figure g-i" data-hover>
+      <div class="figure__veil"></div>
+      <img src="./images/property/70-600.jpg" alt="Estate at dusk" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- floor plans -->
+<section class="sec" id="plans">
+  <div class="duo" style="margin-bottom:64px">
+    <div class="duo__head">
+      <div class="label fade-up">IX · Plans</div>
+      <h2 class="display display--lg fade-up" style="margin-top:32px">
+        Three levels.<br>
+        <em>10,977 sqft.</em>
+      </h2>
+    </div>
+    <div class="duo__copy">
+      <p class="lede fade-up">
+        Select a level to view its floor plan. The estate is laid out across a finished basement,
+        a main level configured for grand entertaining and a private upper level for family and guests.
+      </p>
+    </div>
+  </div>
+
+  <div class="plans">
+    <div class="plans__tabs">
+      <button class="plan-tab is-active" data-plan="0" data-hover>
+        <span class="n">01</span>
+        <span class="name">Main Level</span>
+        <span class="meta">Floor 1</span>
+      </button>
+      <button class="plan-tab" data-plan="1" data-hover>
+        <span class="n">02</span>
+        <span class="name">Upper Level</span>
+        <span class="meta">Floor 2</span>
+      </button>
+      <button class="plan-tab" data-plan="2" data-hover>
+        <span class="n">03</span>
+        <span class="name">Basement</span>
+        <span class="meta">Lower</span>
+      </button>
+    </div>
+    <div class="plan-pane">
+      <img src="./images/floorplans/floor-1.jpg"        alt="Main level floor plan" class="is-active" data-plan-img="0" />
+      <img src="./images/floorplans/floor-2.jpg"        alt="Upper level floor plan" data-plan-img="1" />
+      <img src="./images/floorplans/floor-basement.jpg" alt="Basement floor plan"    data-plan-img="2" />
+    </div>
+  </div>
+</section>
+
+<!-- contact -->
+<section class="sec" id="contact">
+  <div class="contact">
+    <div class="contact__lhs">
+      <div class="label fade-up">X · Inquire</div>
+      <h2 class="display display--xl fade-up" style="margin-top:32px">
+        A private<br>
+        <em>showing,</em><br>
+        by request.
+      </h2>
+      <p class="lede fade-up">
+        Schedule a private tour of 11147 South Quebec Avenue. Photography, drone media, and the complete
+        property booklet are available on request.
+      </p>
+    </div>
+    <div class="contact__rhs">
+      <div class="agent fade-up">
+        <div class="agent__name">Janelle Nicolay</div>
+        <div class="agent__role">Listing Agent · NICO Group</div>
+        <div class="agent__links">
+          <a class="agent__link" href="tel:+19185503526" data-hover>(918) 550-3526</a>
+          <a class="agent__link" href="mailto:jnicolay@cbtulsa.com" data-hover>jnicolay@cbtulsa.com</a>
+        </div>
+      </div>
+      <div class="agent fade-up">
+        <div class="agent__name">Stuart Gallagher</div>
+        <div class="agent__role">Listing Agent · NICO Group</div>
+        <div class="agent__links">
+          <a class="agent__link" href="tel:+19186934860" data-hover>(918) 693-4860</a>
+          <a class="agent__link" href="mailto:sgallagher@cbtulsa.com" data-hover>sgallagher@cbtulsa.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer class="foot">
+  <div class="foot__lhs">
+    <div>11147 S Quebec Avenue</div>
+    <div>Tulsa, Oklahoma · 74137</div>
+    <div style="margin-top:14px; color:var(--bone-faint);">Gated · Whit-Acres</div>
+  </div>
+  <div class="foot__rhs">
+    <div>NICO Group Headquarters</div>
+    <div>8909 S Yale Avenue · Tulsa, OK 74137</div>
+    <div style="margin-top:14px; color:var(--bone-faint);">jnicolay.cbtulsa.com</div>
+  </div>
+
+  <div class="foot__disclaimer">
+    Owned by a subsidiary of Anywhere Advisors LLC. ©2025 Coldwell Banker. All rights reserved. Coldwell Banker® and the Coldwell Banker logo are trademarks of Coldwell Banker LLC. The Coldwell Banker® system is comprised of company-owned offices which are owned by a subsidiary of Anywhere Advisors LLC and franchised offices which are independently owned and operated. The Coldwell Banker system fully supports the principles of the Fair Housing Act and the Equal Opportunity Act. Property information, square footage, lot size, year built and similar details are deemed reliable but are not guaranteed and should be independently verified by purchaser.
+  </div>
+
+  <div class="foot__kk">
+    <span class="kk-wm">KLINEKRAFT</span>
+  </div>
+</footer>
+
+
+<!-- ─────────────────────────────────────────────────────────
+     Libraries
+     ───────────────────────────────────────────────────────── -->
+<script>document.documentElement.classList.remove('no-js');</script>
+<script src="./vendor/gsap.min.js"></script>
+<script src="./vendor/ScrollTrigger.min.js"></script>
+<script src="./vendor/lenis.min.js"></script>
+
+<script>
+(function(){
+  'use strict';
+
+  // If anything below throws, reveal the page so it remains readable
+  function safetyReveal(err){
+    if(err) console.error('[site]', err);
+    try{
+      var intro = document.getElementById('intro');
+      if(intro){ intro.style.opacity = 0; intro.style.pointerEvents = 'none'; intro.classList.add('is-done'); }
+      document.querySelectorAll('.fade-up, .fade-in').forEach(function(el){
+        el.style.opacity = 1; el.style.transform = 'none';
+      });
+      document.querySelectorAll('.split-line__inner').forEach(function(el){
+        el.style.transform = 'none';
+      });
+      document.querySelectorAll('.figure__veil').forEach(function(el){ el.style.display = 'none'; });
+      var ef = document.getElementById('expandFrame');
+      if(ef) ef.style.clipPath = 'none';
+    } catch(e){}
+  }
+  window.addEventListener('error', function(e){ safetyReveal(e.error || e.message); });
+
+  if(typeof gsap === 'undefined' || typeof Lenis === 'undefined'){
+    safetyReveal('libraries failed to load');
+    return;
+  }
+
+  const $  = (s, c=document) => c.querySelector(s);
+  const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.defaults({ ease: 'power3.out' });
+
+  /* ─── Lenis smooth scroll ─── */
+  const lenis = new Lenis({
+    duration: 1.4,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    smoothTouch: false,
+    touchMultiplier: 1.4,
+  });
+
+  lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.ticker.add((time)=>{ lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+
+  // anchor links route through lenis
+  $$('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      const id = a.getAttribute('href');
+      if(id === '#' || id.length < 2) return;
+      const el = document.querySelector(id);
+      if(!el) return;
+      e.preventDefault();
+      lenis.scrollTo(el, { offset: -40, duration: 1.6 });
+    });
+  });
+
+  /* ─── custom cursor ─── */
+  const cursor = $('#cursor');
+  let cx=0, cy=0, tx=0, ty=0;
+  document.addEventListener('mousemove', (e)=>{
+    tx = e.clientX; ty = e.clientY;
+  });
+  function rafCursor(){
+    cx += (tx - cx) * 0.18;
+    cy += (ty - cy) * 0.18;
+    cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+    requestAnimationFrame(rafCursor);
+  }
+  rafCursor();
+
+  document.addEventListener('mouseleave', ()=> cursor.classList.add('is-hidden'));
+  document.addEventListener('mouseenter', ()=> cursor.classList.remove('is-hidden'));
+  $$('[data-hover], a, button').forEach(el=>{
+    el.addEventListener('mouseenter', ()=> cursor.classList.add('is-hover'));
+    el.addEventListener('mouseleave', ()=> cursor.classList.remove('is-hover'));
+  });
+
+  /* ─── intro / loader timeline ─── */
+  const introTl = gsap.timeline({
+    onComplete: ()=>{
+      $('#intro').classList.add('is-done');
+      // start hero entrance
+      heroIn();
+    }
+  });
+
+  // wait for at least the hero image to load before kicking the intro out
+  const heroImg = new Image();
+  heroImg.src = './images/property/01-2.jpg';
+
+  introTl
+    .to('#introLine', { scaleY: 1, duration: 1.1, ease:'power3.inOut' })
+    .to('#introTitle', { opacity:1, duration: .8 }, '-=.2')
+    .to('#introSub',   { opacity:1, duration: .6 }, '-=.4')
+    .to({}, { duration: .9 })  // hold
+    .to(['#introTitle','#introSub'], { opacity:0, duration:.5, stagger:.05 })
+    .to('#introLine', { scaleY:0, transformOrigin:'bottom', duration:.7, ease:'power3.inOut' }, '-=.2')
+    .to('#intro', { autoAlpha:0, duration:.5 }, '-=.3');
+
+  /* ─── hero entrance ─── */
+  function heroIn(){
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' }});
+    tl.from('#heroMedia', { scale: 1.18, opacity: 0, duration: 1.8, ease:'power2.out' }, 0)
+      .from('#heroEyebrow', { y:30, opacity:0, duration: 1.1 }, .3)
+      .from('#heroL1',  { yPercent:120, duration:1.1 }, .35)
+      .from('#heroL2',  { yPercent:120, duration:1.1 }, .45)
+      .from('#heroSub', { y:20, opacity:0, duration:.9 }, .9)
+      .from('#heroScroll', { opacity:0, y:10, duration:.9 }, 1.0);
+  }
+
+  /* ─── nav: hide on scroll down, show on scroll up ─── */
+  const nav = $('#nav');
+  let lastScroll = 0;
+  ScrollTrigger.create({
+    start:'top top',
+    end:'max',
+    onUpdate: (self)=>{
+      const y = self.scroll();
+      if(y < 80){ nav.classList.remove('is-hidden'); lastScroll = y; return; }
+      if(y > lastScroll + 6) nav.classList.add('is-hidden');
+      else if(y < lastScroll - 6) nav.classList.remove('is-hidden');
+      lastScroll = y;
+    }
+  });
+
+  /* ─── hero parallax ─── */
+  if(!prefersReduced){
+    gsap.to('#heroMedia', {
+      yPercent: 18,
+      ease:'none',
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      }
+    });
+  }
+
+  /* ─── invitation reveals ─── */
+  function setupReveals(){
+    $$('.fade-up').forEach(el=>{
+      gsap.fromTo(el,
+        { opacity:0, y:32 },
+        {
+          opacity:1, y:0, duration:1.2, ease:'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%', once:true }
+        });
+    });
+    $$('.fade-in').forEach(el=>{
+      gsap.fromTo(el,
+        { opacity:0 },
+        {
+          opacity:1, duration:1.4,
+          scrollTrigger: { trigger: el, start: 'top 88%', once:true }
+        });
+    });
+  }
+  setupReveals();
+
+  /* ─── stat counts: subtle reveal in sequence ─── */
+  gsap.from('#stats .stat', {
+    y: 24, opacity: 0, duration: .9, stagger: .08, ease:'power3.out',
+    scrollTrigger: { trigger:'#stats', start:'top 80%', once:true }
+  });
+
+  /* ─── figure veil reveals (image expansion on scroll) ─── */
+  $$('.figure').forEach(fig=>{
+    const veil = fig.querySelector('.figure__veil');
+    const img  = fig.querySelector('img');
+    if(!veil) return;
+
+    gsap.set(veil, { scaleY: 1 });
+    gsap.set(img,  { scale: 1.18 });
+
+    gsap.timeline({
+      scrollTrigger: { trigger: fig, start: 'top 82%', once:true }
+    })
+    .to(veil, { scaleY: 0, transformOrigin:'top', duration: 1.4, ease:'power3.inOut' })
+    .to(img,  { scale: 1.0, duration: 1.6, ease:'power3.out' }, '-=1.2');
+  });
+
+  /* ─── figure parallax on long images ─── */
+  if(!prefersReduced){
+    $$('.figure img').forEach(img=>{
+      const fig = img.closest('.figure');
+      if(!fig) return;
+      gsap.to(img, {
+        yPercent: -6, scale: 1.02,
+        ease:'none',
+        scrollTrigger: { trigger: fig, start:'top bottom', end:'bottom top', scrub: true }
+      });
+    });
+
+    // wide-figure parallax (background-image)
+    $$('.wide-figure__img, .fb__img').forEach(el=>{
+      gsap.fromTo(el,
+        { yPercent: -8 },
+        {
+          yPercent: 8, ease:'none',
+          scrollTrigger: { trigger: el.parentElement, start:'top bottom', end:'bottom top', scrub:true }
+        });
+    });
+  }
+
+  /* ─── pinned image expansion (architecture) ─── */
+  if(!prefersReduced){
+    gsap.to('#expandFrame', {
+      clipPath: 'inset(0% 0% 0% 0%)',
+      ease:'none',
+      scrollTrigger: {
+        trigger:'#architecture',
+        start:'top top',
+        end:'bottom bottom',
+        scrub: 1,
+      }
+    });
+    gsap.to('#expandMedia', {
+      scale: 1.05,
+      ease:'none',
+      scrollTrigger: {
+        trigger:'#architecture',
+        start:'top top',
+        end:'bottom bottom',
+        scrub: 1,
+      }
+    });
+  }
+
+  /* ─── invite rule grows ─── */
+  gsap.from('.invite__rule', {
+    scaleY: 0, transformOrigin:'top', duration:1.4, ease:'power3.inOut',
+    scrollTrigger:{ trigger:'.invite__rule', start:'top 85%', once:true }
+  });
+
+  /* ─── floor plan tabs ─── */
+  const tabs = $$('.plan-tab');
+  const planImgs = $$('[data-plan-img]');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      const i = tab.dataset.plan;
+      tabs.forEach(t=> t.classList.toggle('is-active', t===tab));
+      planImgs.forEach(im=> im.classList.toggle('is-active', im.dataset.planImg===i));
+    });
+  });
+
+  /* ─── ScrollTrigger refresh on image load (fonts shift things) ─── */
+  window.addEventListener('load', ()=>{
+    setTimeout(()=> ScrollTrigger.refresh(), 100);
+  });
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(()=> setTimeout(()=> ScrollTrigger.refresh(), 100));
+  }
+
+})();
+</script>
+
+</body>
+</html>
